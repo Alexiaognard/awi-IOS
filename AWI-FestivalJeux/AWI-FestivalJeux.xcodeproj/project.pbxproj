@@ -1,0 +1,579 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01EC961B25F633FE00D705AD /* AWI_FestivalJeuxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC961A25F633FE00D705AD /* AWI_FestivalJeuxApp.swift */; };
+		01EC961D25F633FE00D705AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC961C25F633FE00D705AD /* ContentView.swift */; };
+		01EC961F25F6340000D705AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01EC961E25F6340000D705AD /* Assets.xcassets */; };
+		01EC962225F6340000D705AD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01EC962125F6340000D705AD /* Preview Assets.xcassets */; };
+		01EC962D25F6340000D705AD /* AWI_FestivalJeuxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC962C25F6340000D705AD /* AWI_FestivalJeuxTests.swift */; };
+		01EC963825F6340000D705AD /* AWI_FestivalJeuxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC963725F6340000D705AD /* AWI_FestivalJeuxUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		01EC962925F6340000D705AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01EC960F25F633FE00D705AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 01EC961625F633FE00D705AD;
+			remoteInfo = "AWI-FestivalJeux";
+		};
+		01EC963425F6340000D705AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01EC960F25F633FE00D705AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 01EC961625F633FE00D705AD;
+			remoteInfo = "AWI-FestivalJeux";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01EC961725F633FE00D705AD /* AWI-FestivalJeux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AWI-FestivalJeux.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		01EC961A25F633FE00D705AD /* AWI_FestivalJeuxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWI_FestivalJeuxApp.swift; sourceTree = "<group>"; };
+		01EC961C25F633FE00D705AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		01EC961E25F6340000D705AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		01EC962125F6340000D705AD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		01EC962325F6340000D705AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01EC962825F6340000D705AD /* AWI-FestivalJeuxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AWI-FestivalJeuxTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		01EC962C25F6340000D705AD /* AWI_FestivalJeuxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWI_FestivalJeuxTests.swift; sourceTree = "<group>"; };
+		01EC962E25F6340000D705AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01EC963325F6340000D705AD /* AWI-FestivalJeuxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AWI-FestivalJeuxUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		01EC963725F6340000D705AD /* AWI_FestivalJeuxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWI_FestivalJeuxUITests.swift; sourceTree = "<group>"; };
+		01EC963925F6340000D705AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		01EC961425F633FE00D705AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01EC962525F6340000D705AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01EC963025F6340000D705AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		01EC960E25F633FE00D705AD = {
+			isa = PBXGroup;
+			children = (
+				01EC961925F633FE00D705AD /* AWI-FestivalJeux */,
+				01EC962B25F6340000D705AD /* AWI-FestivalJeuxTests */,
+				01EC963625F6340000D705AD /* AWI-FestivalJeuxUITests */,
+				01EC961825F633FE00D705AD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		01EC961825F633FE00D705AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				01EC961725F633FE00D705AD /* AWI-FestivalJeux.app */,
+				01EC962825F6340000D705AD /* AWI-FestivalJeuxTests.xctest */,
+				01EC963325F6340000D705AD /* AWI-FestivalJeuxUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		01EC961925F633FE00D705AD /* AWI-FestivalJeux */ = {
+			isa = PBXGroup;
+			children = (
+				01EC961A25F633FE00D705AD /* AWI_FestivalJeuxApp.swift */,
+				01EC961C25F633FE00D705AD /* ContentView.swift */,
+				01EC961E25F6340000D705AD /* Assets.xcassets */,
+				01EC962325F6340000D705AD /* Info.plist */,
+				01EC962025F6340000D705AD /* Preview Content */,
+			);
+			path = "AWI-FestivalJeux";
+			sourceTree = "<group>";
+		};
+		01EC962025F6340000D705AD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				01EC962125F6340000D705AD /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		01EC962B25F6340000D705AD /* AWI-FestivalJeuxTests */ = {
+			isa = PBXGroup;
+			children = (
+				01EC962C25F6340000D705AD /* AWI_FestivalJeuxTests.swift */,
+				01EC962E25F6340000D705AD /* Info.plist */,
+			);
+			path = "AWI-FestivalJeuxTests";
+			sourceTree = "<group>";
+		};
+		01EC963625F6340000D705AD /* AWI-FestivalJeuxUITests */ = {
+			isa = PBXGroup;
+			children = (
+				01EC963725F6340000D705AD /* AWI_FestivalJeuxUITests.swift */,
+				01EC963925F6340000D705AD /* Info.plist */,
+			);
+			path = "AWI-FestivalJeuxUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		01EC961625F633FE00D705AD /* AWI-FestivalJeux */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01EC963C25F6340000D705AD /* Build configuration list for PBXNativeTarget "AWI-FestivalJeux" */;
+			buildPhases = (
+				01EC961325F633FE00D705AD /* Sources */,
+				01EC961425F633FE00D705AD /* Frameworks */,
+				01EC961525F633FE00D705AD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AWI-FestivalJeux";
+			productName = "AWI-FestivalJeux";
+			productReference = 01EC961725F633FE00D705AD /* AWI-FestivalJeux.app */;
+			productType = "com.apple.product-type.application";
+		};
+		01EC962725F6340000D705AD /* AWI-FestivalJeuxTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01EC963F25F6340000D705AD /* Build configuration list for PBXNativeTarget "AWI-FestivalJeuxTests" */;
+			buildPhases = (
+				01EC962425F6340000D705AD /* Sources */,
+				01EC962525F6340000D705AD /* Frameworks */,
+				01EC962625F6340000D705AD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				01EC962A25F6340000D705AD /* PBXTargetDependency */,
+			);
+			name = "AWI-FestivalJeuxTests";
+			productName = "AWI-FestivalJeuxTests";
+			productReference = 01EC962825F6340000D705AD /* AWI-FestivalJeuxTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		01EC963225F6340000D705AD /* AWI-FestivalJeuxUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01EC964225F6340000D705AD /* Build configuration list for PBXNativeTarget "AWI-FestivalJeuxUITests" */;
+			buildPhases = (
+				01EC962F25F6340000D705AD /* Sources */,
+				01EC963025F6340000D705AD /* Frameworks */,
+				01EC963125F6340000D705AD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				01EC963525F6340000D705AD /* PBXTargetDependency */,
+			);
+			name = "AWI-FestivalJeuxUITests";
+			productName = "AWI-FestivalJeuxUITests";
+			productReference = 01EC963325F6340000D705AD /* AWI-FestivalJeuxUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		01EC960F25F633FE00D705AD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					01EC961625F633FE00D705AD = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					01EC962725F6340000D705AD = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 01EC961625F633FE00D705AD;
+					};
+					01EC963225F6340000D705AD = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 01EC961625F633FE00D705AD;
+					};
+				};
+			};
+			buildConfigurationList = 01EC961225F633FE00D705AD /* Build configuration list for PBXProject "AWI-FestivalJeux" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 01EC960E25F633FE00D705AD;
+			productRefGroup = 01EC961825F633FE00D705AD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				01EC961625F633FE00D705AD /* AWI-FestivalJeux */,
+				01EC962725F6340000D705AD /* AWI-FestivalJeuxTests */,
+				01EC963225F6340000D705AD /* AWI-FestivalJeuxUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		01EC961525F633FE00D705AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01EC962225F6340000D705AD /* Preview Assets.xcassets in Resources */,
+				01EC961F25F6340000D705AD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01EC962625F6340000D705AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01EC963125F6340000D705AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		01EC961325F633FE00D705AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01EC961D25F633FE00D705AD /* ContentView.swift in Sources */,
+				01EC961B25F633FE00D705AD /* AWI_FestivalJeuxApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01EC962425F6340000D705AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01EC962D25F6340000D705AD /* AWI_FestivalJeuxTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01EC962F25F6340000D705AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01EC963825F6340000D705AD /* AWI_FestivalJeuxUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		01EC962A25F6340000D705AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 01EC961625F633FE00D705AD /* AWI-FestivalJeux */;
+			targetProxy = 01EC962925F6340000D705AD /* PBXContainerItemProxy */;
+		};
+		01EC963525F6340000D705AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 01EC961625F633FE00D705AD /* AWI-FestivalJeux */;
+			targetProxy = 01EC963425F6340000D705AD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		01EC963A25F6340000D705AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		01EC963B25F6340000D705AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		01EC963D25F6340000D705AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"AWI-FestivalJeux/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "AWI-FestivalJeux/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "CantonGuyonOgnard.AWI-FestivalJeux";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		01EC963E25F6340000D705AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"AWI-FestivalJeux/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "AWI-FestivalJeux/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "CantonGuyonOgnard.AWI-FestivalJeux";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		01EC964025F6340000D705AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "AWI-FestivalJeuxTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "CantonGuyonOgnard.AWI-FestivalJeuxTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AWI-FestivalJeux.app/AWI-FestivalJeux";
+			};
+			name = Debug;
+		};
+		01EC964125F6340000D705AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "AWI-FestivalJeuxTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "CantonGuyonOgnard.AWI-FestivalJeuxTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AWI-FestivalJeux.app/AWI-FestivalJeux";
+			};
+			name = Release;
+		};
+		01EC964325F6340000D705AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "AWI-FestivalJeuxUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "CantonGuyonOgnard.AWI-FestivalJeuxUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "AWI-FestivalJeux";
+			};
+			name = Debug;
+		};
+		01EC964425F6340000D705AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "AWI-FestivalJeuxUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "CantonGuyonOgnard.AWI-FestivalJeuxUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "AWI-FestivalJeux";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		01EC961225F633FE00D705AD /* Build configuration list for PBXProject "AWI-FestivalJeux" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01EC963A25F6340000D705AD /* Debug */,
+				01EC963B25F6340000D705AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01EC963C25F6340000D705AD /* Build configuration list for PBXNativeTarget "AWI-FestivalJeux" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01EC963D25F6340000D705AD /* Debug */,
+				01EC963E25F6340000D705AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01EC963F25F6340000D705AD /* Build configuration list for PBXNativeTarget "AWI-FestivalJeuxTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01EC964025F6340000D705AD /* Debug */,
+				01EC964125F6340000D705AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01EC964225F6340000D705AD /* Build configuration list for PBXNativeTarget "AWI-FestivalJeuxUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01EC964325F6340000D705AD /* Debug */,
+				01EC964425F6340000D705AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 01EC960F25F633FE00D705AD /* Project object */;
+}
