@@ -13,6 +13,10 @@
 		01EC962225F6340000D705AD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01EC962125F6340000D705AD /* Preview Assets.xcassets */; };
 		01EC962D25F6340000D705AD /* AWI_FestivalJeuxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC962C25F6340000D705AD /* AWI_FestivalJeuxTests.swift */; };
 		01EC963825F6340000D705AD /* AWI_FestivalJeuxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC963725F6340000D705AD /* AWI_FestivalJeuxUITests.swift */; };
+		01EC964A25F7637D00D705AD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC964925F7637D00D705AD /* Game.swift */; };
+		01EC964F25F7645D00D705AD /* Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC964E25F7645D00D705AD /* Editor.swift */; };
+		01EC965425F7655600D705AD /* Exhibitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC965325F7655600D705AD /* Exhibitor.swift */; };
+		01EC965925F766C600D705AD /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC965825F766C600D705AD /* Zone.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +49,10 @@
 		01EC963325F6340000D705AD /* AWI-FestivalJeuxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AWI-FestivalJeuxUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01EC963725F6340000D705AD /* AWI_FestivalJeuxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWI_FestivalJeuxUITests.swift; sourceTree = "<group>"; };
 		01EC963925F6340000D705AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01EC964925F7637D00D705AD /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		01EC964E25F7645D00D705AD /* Editor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Editor.swift; sourceTree = "<group>"; };
+		01EC965325F7655600D705AD /* Exhibitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exhibitor.swift; sourceTree = "<group>"; };
+		01EC965825F766C600D705AD /* Zone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +103,7 @@
 		01EC961925F633FE00D705AD /* AWI-FestivalJeux */ = {
 			isa = PBXGroup;
 			children = (
+				01EC964825F7636E00D705AD /* Models */,
 				01EC961A25F633FE00D705AD /* AWI_FestivalJeuxApp.swift */,
 				01EC961C25F633FE00D705AD /* ContentView.swift */,
 				01EC961E25F6340000D705AD /* Assets.xcassets */,
@@ -128,6 +137,17 @@
 				01EC963925F6340000D705AD /* Info.plist */,
 			);
 			path = "AWI-FestivalJeuxUITests";
+			sourceTree = "<group>";
+		};
+		01EC964825F7636E00D705AD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				01EC964925F7637D00D705AD /* Game.swift */,
+				01EC964E25F7645D00D705AD /* Editor.swift */,
+				01EC965325F7655600D705AD /* Exhibitor.swift */,
+				01EC965825F766C600D705AD /* Zone.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +280,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				01EC961D25F633FE00D705AD /* ContentView.swift in Sources */,
+				01EC964A25F7637D00D705AD /* Game.swift in Sources */,
+				01EC964F25F7645D00D705AD /* Editor.swift in Sources */,
 				01EC961B25F633FE00D705AD /* AWI_FestivalJeuxApp.swift in Sources */,
+				01EC965425F7655600D705AD /* Exhibitor.swift in Sources */,
+				01EC965925F766C600D705AD /* Zone.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
