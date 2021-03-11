@@ -11,12 +11,9 @@ import Foundation
 class Editor : Identifiable, Codable {
     var editorId : Int
     var editorName : String
-    var editorAddress : String
     
-    init(id: Int, name:String, editorAddress: String){
+    init(id: Int, name:String){
         self.editorId = id
         self.editorName = name
-        self.editorAddress = editorAddress
-        
     }
 }
