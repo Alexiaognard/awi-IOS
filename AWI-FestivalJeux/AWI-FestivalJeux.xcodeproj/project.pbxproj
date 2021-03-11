@@ -8,10 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0177AE7825F9FC57002BE4CA /* Festival.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0177AE7725F9FC57002BE4CA /* Festival.swift */; };
-		0177AE8325FA1586002BE4CA /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0177AE8225FA1586002BE4CA /* GameView.swift */; };
-		0177AE8825FA1598002BE4CA /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0177AE8725FA1598002BE4CA /* EditorView.swift */; };
-		0177AE8D25FA15A6002BE4CA /* ExhibitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0177AE8C25FA15A6002BE4CA /* ExhibitorView.swift */; };
+		0177AE8325FA1586002BE4CA /* GameViewDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0177AE8225FA1586002BE4CA /* GameViewDetailed.swift */; };
+		0177AE8D25FA15A6002BE4CA /* ExhibitorViewDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0177AE8C25FA15A6002BE4CA /* ExhibitorViewDetailed.swift */; };
 		0177AE9225FA15B6002BE4CA /* FestivalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0177AE9125FA15B6002BE4CA /* FestivalView.swift */; };
+		0177AEA025FA3A0A002BE4CA /* EditorViewDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0177AE9F25FA3A0A002BE4CA /* EditorViewDetailed.swift */; };
+		0177AEA525FA53B8002BE4CA /* EditorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0177AEA425FA53B8002BE4CA /* EditorListView.swift */; };
+		0177AEAA25FA54C7002BE4CA /* GameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0177AEA925FA54C7002BE4CA /* GameListView.swift */; };
+		0177AEB725FA5509002BE4CA /* ExhibitorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0177AEB625FA5509002BE4CA /* ExhibitorListView.swift */; };
 		01EC961B25F633FE00D705AD /* AWI_FestivalJeuxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC961A25F633FE00D705AD /* AWI_FestivalJeuxApp.swift */; };
 		01EC961D25F633FE00D705AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC961C25F633FE00D705AD /* ContentView.swift */; };
 		01EC961F25F6340000D705AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01EC961E25F6340000D705AD /* Assets.xcassets */; };
@@ -43,10 +46,13 @@
 
 /* Begin PBXFileReference section */
 		0177AE7725F9FC57002BE4CA /* Festival.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Festival.swift; sourceTree = "<group>"; };
-		0177AE8225FA1586002BE4CA /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
-		0177AE8725FA1598002BE4CA /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
-		0177AE8C25FA15A6002BE4CA /* ExhibitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitorView.swift; sourceTree = "<group>"; };
+		0177AE8225FA1586002BE4CA /* GameViewDetailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewDetailed.swift; sourceTree = "<group>"; };
+		0177AE8C25FA15A6002BE4CA /* ExhibitorViewDetailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitorViewDetailed.swift; sourceTree = "<group>"; };
 		0177AE9125FA15B6002BE4CA /* FestivalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FestivalView.swift; sourceTree = "<group>"; };
+		0177AE9F25FA3A0A002BE4CA /* EditorViewDetailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewDetailed.swift; sourceTree = "<group>"; };
+		0177AEA425FA53B8002BE4CA /* EditorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorListView.swift; sourceTree = "<group>"; };
+		0177AEA925FA54C7002BE4CA /* GameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListView.swift; sourceTree = "<group>"; };
+		0177AEB625FA5509002BE4CA /* ExhibitorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitorListView.swift; sourceTree = "<group>"; };
 		01EC961725F633FE00D705AD /* AWI-FestivalJeux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AWI-FestivalJeux.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01EC961A25F633FE00D705AD /* AWI_FestivalJeuxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWI_FestivalJeuxApp.swift; sourceTree = "<group>"; };
 		01EC961C25F633FE00D705AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,10 +99,13 @@
 		0177AE7F25FA1550002BE4CA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0177AE8225FA1586002BE4CA /* GameView.swift */,
-				0177AE8725FA1598002BE4CA /* EditorView.swift */,
-				0177AE8C25FA15A6002BE4CA /* ExhibitorView.swift */,
+				0177AE8225FA1586002BE4CA /* GameViewDetailed.swift */,
+				0177AE8C25FA15A6002BE4CA /* ExhibitorViewDetailed.swift */,
 				0177AE9125FA15B6002BE4CA /* FestivalView.swift */,
+				0177AE9F25FA3A0A002BE4CA /* EditorViewDetailed.swift */,
+				0177AEA425FA53B8002BE4CA /* EditorListView.swift */,
+				0177AEA925FA54C7002BE4CA /* GameListView.swift */,
+				0177AEB625FA5509002BE4CA /* ExhibitorListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -318,16 +327,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0177AE8825FA1598002BE4CA /* EditorView.swift in Sources */,
 				0177AE9225FA15B6002BE4CA /* FestivalView.swift in Sources */,
+				0177AEA525FA53B8002BE4CA /* EditorListView.swift in Sources */,
 				01EC961D25F633FE00D705AD /* ContentView.swift in Sources */,
 				01EC964A25F7637D00D705AD /* Game.swift in Sources */,
 				0177AE7825F9FC57002BE4CA /* Festival.swift in Sources */,
 				01EC964F25F7645D00D705AD /* Editor.swift in Sources */,
 				01EC961B25F633FE00D705AD /* AWI_FestivalJeuxApp.swift in Sources */,
 				01EC965425F7655600D705AD /* Exhibitor.swift in Sources */,
-				0177AE8D25FA15A6002BE4CA /* ExhibitorView.swift in Sources */,
-				0177AE8325FA1586002BE4CA /* GameView.swift in Sources */,
+				0177AE8D25FA15A6002BE4CA /* ExhibitorViewDetailed.swift in Sources */,
+				0177AEA025FA3A0A002BE4CA /* EditorViewDetailed.swift in Sources */,
+				0177AEAA25FA54C7002BE4CA /* GameListView.swift in Sources */,
+				0177AEB725FA5509002BE4CA /* ExhibitorListView.swift in Sources */,
+				0177AE8325FA1586002BE4CA /* GameViewDetailed.swift in Sources */,
 				01EC965925F766C600D705AD /* Zone.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
