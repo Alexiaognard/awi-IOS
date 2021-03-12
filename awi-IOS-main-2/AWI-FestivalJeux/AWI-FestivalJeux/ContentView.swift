@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var games : [Game] = [Game]()
-    @State var editors : [Editor] = [Editor]()
-    @State var exhibitors : [Exhibitor] = [Exhibitor]()
+    @State var games = GameList()
+    @State var editors = EditorList()
+    @State var zones : ZoneList = ZoneList()
     
     let columns = [
         GridItem(.adaptive(minimum: 150))
@@ -48,12 +48,12 @@ struct ContentView: View {
                             }
                             .navigationBarTitle("Menu")
                             
-                            NavigationLink(destination: ExhibitorListView(exhibitors: exhibitors)) {
+                            NavigationLink(destination: ZoneListView(zones: zones)) {
                                 VStack {
                                     Image(systemName: "house")
                                         .foregroundColor(.black)
                                         .imageScale(.large)
-                                    Text("Exposants")
+                                    Text("Zones")
                                         .foregroundColor(.black)
                                         .font(.headline)
                                 }
@@ -70,9 +70,9 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(
-            games: [Game(id: 1, name: "Monopoly", gameMinimumAge: 6, gameDuration: 30, isPrototype: false, gameMinimumPlayers: 2, gameMaximumPlayers: 6, gameType: "Famille", gameEditor: Editor(id: 1, name: "Editeur1"), gameZone: Zone(name: "Famille"), isAP: false)],
+            /*games: [Game(id: 1, name: "Monopoly", gameMinimumAge: 6, gameDuration: 30, isPrototype: false, gameMinimumPlayers: 2, gameMaximumPlayers: 6, gameType: "Famille", gameEditor: Editor(id: 1, name: "Editeur1"), gameZone: Zone(name: "Famille"), isAP: false)],
             editors: [Editor(id:1, name: "Editor1"), Editor(id:2, name: "Editor2")],
-            exhibitors: [Exhibitor(id: 1, name: "exposant1",  exhibitorLocalisation: [Zone(name: "Pour tous"), Zone(name: "Ambiance")])]
+            exhibitors: [Exhibitor(id: 1, name: "exposant1",  exhibitorLocalisation: [Zone(name: "Pour tous"), Zone(name: "Ambiance")])]*/
         )
     }
 }

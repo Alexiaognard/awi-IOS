@@ -49,6 +49,6 @@ struct GameViewDetailed: View {
 
 struct GameViewDetailed_Previews: PreviewProvider {
     static var previews: some View {
-        GameViewDetailed(game: Game(id: 1, name: "Monopoly", gameMinimumAge: 6, gameDuration: 30, isPrototype: false, gameMinimumPlayers: 2, gameMaximumPlayers: 6, gameType: "Famille", gameEditor: Editor(id: 1, name: "Editeur1"), gameZone: Zone(name: "Famille"), isAP: false))
+        GameViewDetailed(game: Game(id: 1, name: "Monopoly", gameMinimumAge: 6, gameDuration: 30, isPrototype: false, gameMinimumPlayers: 2, gameMaximumPlayers: 6, gameType: "Famille", gameEditor: Editor(id: 1, name: "Editeur1"), gameZone: Zone(name: "Famille"), isAP: false, notice: "ceci est une notice"))
     }
 }
