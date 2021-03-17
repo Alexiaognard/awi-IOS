@@ -11,7 +11,7 @@ struct ContentView: View {
     //aa
     @State var games = GameList()
     @State var editors = EditorList()
-    @State var zones : ZoneList = ZoneList()
+    @State var zones = ZoneList()
     
     let columns = [
         GridItem(.adaptive(minimum: 150))

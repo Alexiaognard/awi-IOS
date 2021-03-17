@@ -9,6 +9,13 @@ import SwiftUI
 
 struct GameListView: View {
     @ObservedObject var games : GameList
+    var intent : SearchGamesIntent
+    
+    init(games: GameList){
+        self.games = games
+        intent = SearchGamesIntent(gameList: games)
+    }
+    
     var body: some View {
         List{
             ForEach(self.games.gameList){ game in
@@ -23,11 +30,11 @@ struct GameListView: View {
     }
 }
 
-struct GameListView_Previews: PreviewProvider {
+/*struct GameListView_Previews: PreviewProvider {
     static var previews: some View {
-        GameListView(games: GameList()/*games: [
+        GameListView(games: GameList(), intent: SearchGamesIntent()/*games: [
                         Game(id: 1, name: "Monopoly", gameMinimumAge: 6, gameDuration: 30, isPrototype: false, gameMinimumPlayers: 2, gameMaximumPlayers: 6, gameType: "Famille", gameEditor: Editor(id: 1, name: "Editeur1"), gameZone: Zone(name: "Famille"), isAP: false),
                         Game(id: 2, name: "Monopoly2", gameMinimumAge: 6, gameDuration: 30, isPrototype: false, gameMinimumPlayers: 2, gameMaximumPlayers: 6, gameType: "Famille", gameEditor: Editor(id: 1, name: "Editeur2"), gameZone: Zone(name: "Famille"), isAP: false)
         ]*/)
     }
-}
+}*/

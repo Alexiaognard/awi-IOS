@@ -22,6 +22,12 @@ class SearchGamesIntent {
     }
     
     func gamesLoaded(result: Result<[Game], HttpRequestError>){
-        self.gameList.gameListState = .loaded
+        switch result {
+        case let .success(data):
+            self.gameList.gameListState = .loaded(data)
+        case let .failure(error):
+            self.gameList.gameListState = .loadingError(error)
+        }
+        
     }
 }

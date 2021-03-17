@@ -10,13 +10,15 @@ import SwiftUI
 import Combine
 
 enum GameListState: CustomStringConvertible{
-    case loaded
+    case loaded([Game])
+    case loadingError(Error)
     case loading
     case waiting
     
     var description: String{
         switch self{
-        case .loaded : return "loaded"
+        case .loaded(let games) : return "loaded : \(games.count) games"
+        case .loadingError(let error) : return "loading error : \(error)"
         case .loading : return "loading"
         case .waiting : return "waiting"
         }
@@ -27,6 +29,12 @@ class GameList: ObservableObject{
     @Published var gameListState: GameListState = .waiting{
         didSet{
             switch self.gameListState {
+            case let .loaded(data):
+                self.new(games: data)
+                
+            case let .loadingError(error):
+                //Si une erreur pendant le chargement des jeux
+                return
             default :
                 return
             }
@@ -34,4 +42,10 @@ class GameList: ObservableObject{
     }
     
     @Published var gameList = [Game]()
+    
+    func new(games: [Game]){
+        self.gameList = games
+        self.gameListState = .waiting
+    }
+    
 }
