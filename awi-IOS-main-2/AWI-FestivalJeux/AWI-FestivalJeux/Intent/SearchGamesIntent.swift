@@ -18,9 +18,10 @@ class SearchGamesIntent {
     func loadGames(){
         self.gameList.gameListState = .loading
         //Faire appel à l'API
+        APIRetriever.loadGamesFromAPI(endofrequest: gamesLoaded)
     }
     
-    func gamesLoaded(){
+    func gamesLoaded(result: Result<[Game], HttpRequestError>){
         self.gameList.gameListState = .loaded
     }
 }

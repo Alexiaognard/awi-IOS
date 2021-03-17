@@ -7,13 +7,16 @@
 
 import Foundation
 
-class Festival: Identifiable, Codable {
-    var id = UUID()
+class Festival: Codable {
+    static var isSet = false
+    
+    var _festivalId : Int
     var name : String
     var date : Date
     
-    init(name:String, date: Date){
+    private init(name:String, date: Date){
         self.name = name
         self.date = date
+        Festival.isSet = true
     }
 }

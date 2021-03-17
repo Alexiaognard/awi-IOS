@@ -7,12 +7,13 @@
 
 import Foundation
 
-class Zone : Identifiable, Codable {
-    var id = UUID()
+class Zone : Codable {
+    var zoneId : Int
     var name : String
     
     
-    init(name:String){
+    init(zoneId: Int, name:String){
+        self.zoneId = zoneId
         self.name = name
     }
 }

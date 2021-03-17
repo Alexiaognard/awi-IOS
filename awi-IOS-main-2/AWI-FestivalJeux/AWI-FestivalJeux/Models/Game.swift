@@ -11,7 +11,7 @@ class Game : Identifiable, Encodable {
     private(set) var gameId : Int
     private(set) var gameName : String
     private(set) var gameMinimumAge : Int
-    private(set) var gameDuration : Int
+    private(set) var gameDuration : Int?
     private(set) var isPrototype : Bool
     private(set) var gameMinimumPlayers : Int
     private(set) var gameMaximumPlayers : Int
@@ -21,7 +21,7 @@ class Game : Identifiable, Encodable {
     private(set) var isAP : Bool
     private(set) var notice : String
     
-    init(id: Int, name:String, gameMinimumAge: Int, gameDuration: Int, isPrototype : Bool, gameMinimumPlayers: Int, gameMaximumPlayers : Int, gameType: String, gameEditor: Editor, gameZone: Zone, isAP: Bool, notice: String){
+    init(id: Int, name:String, gameMinimumAge: Int, gameDuration: Int?, isPrototype : Bool, gameMinimumPlayers: Int, gameMaximumPlayers : Int, gameType: String, gameEditor: Editor, gameZone: Zone, isAP: Bool, notice: String){
         self.gameId = id
         self.gameName = name
         self.gameMinimumAge = gameMinimumAge
@@ -35,7 +35,7 @@ class Game : Identifiable, Encodable {
         self.isAP = isAP
         self.notice = notice
     }
-    
+    /*
     enum CodingKeys: String, CodingKey{
         case gameId
         case gameName = "gameName"
@@ -49,5 +49,5 @@ class Game : Identifiable, Encodable {
         case gameZone
         case isAP
         case notice
-    }
+    }*/
 }
