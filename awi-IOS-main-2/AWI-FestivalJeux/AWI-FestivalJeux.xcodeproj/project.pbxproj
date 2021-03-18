@@ -22,6 +22,7 @@
 		01EC964A25F7637D00D705AD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC964925F7637D00D705AD /* Game.swift */; };
 		01EC964F25F7645D00D705AD /* Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC964E25F7645D00D705AD /* Editor.swift */; };
 		01EC965925F766C600D705AD /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC965825F766C600D705AD /* Zone.swift */; };
+		58D921112603C6080091B0C8 /* SearchFestivalIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D921102603C6080091B0C8 /* SearchFestivalIntent.swift */; };
 		B721859D25FA6A5B00A57B92 /* SearchGamesIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721859C25FA6A5B00A57B92 /* SearchGamesIntent.swift */; };
 		B72185A225FA6C4900A57B92 /* GameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72185A125FA6C4900A57B92 /* GameList.swift */; };
 		B78B29AE25FA700B00D4FA78 /* EditorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78B29AD25FA700B00D4FA78 /* EditorList.swift */; };
@@ -73,6 +74,7 @@
 		01EC964925F7637D00D705AD /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		01EC964E25F7645D00D705AD /* Editor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Editor.swift; sourceTree = "<group>"; };
 		01EC965825F766C600D705AD /* Zone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
+		58D921102603C6080091B0C8 /* SearchFestivalIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFestivalIntent.swift; sourceTree = "<group>"; };
 		B721859C25FA6A5B00A57B92 /* SearchGamesIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGamesIntent.swift; sourceTree = "<group>"; };
 		B72185A125FA6C4900A57B92 /* GameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameList.swift; sourceTree = "<group>"; };
 		B78B29AD25FA700B00D4FA78 /* EditorList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorList.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				B721859C25FA6A5B00A57B92 /* SearchGamesIntent.swift */,
 				B78B29B525FA719000D4FA78 /* SearchEditorsIntent.swift */,
 				B7BBBF7525FB54E00034116C /* SearchZonesIntent.swift */,
+				58D921102603C6080091B0C8 /* SearchFestivalIntent.swift */,
 			);
 			path = Intent;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				0177AE9225FA15B6002BE4CA /* FestivalView.swift in Sources */,
 				0177AEA525FA53B8002BE4CA /* EditorListView.swift in Sources */,
 				B78B29B625FA719000D4FA78 /* SearchEditorsIntent.swift in Sources */,
+				58D921112603C6080091B0C8 /* SearchFestivalIntent.swift in Sources */,
 				B7BBBF6E25FB526D0034116C /* ZoneViewDetailed.swift in Sources */,
 				01EC961D25F633FE00D705AD /* ContentView.swift in Sources */,
 				B7BBBF5825FB4F6A0034116C /* ZoneListView.swift in Sources */,

@@ -8,17 +8,44 @@
 import SwiftUI
 
 struct ContentView: View {
-    //aa
-    @State var games = GameList()
-    @State var editors = EditorList()
-    @State var zones = ZoneList()
+    @ObservedObject var games : GameList
+    @ObservedObject var zones : ZoneList
+    @ObservedObject var editors : EditorList
+ 
+    var festival = Festival.festivalSingleton
+    
+    var intentFestival : SearchFestivalIntent
+    var intentGame : SearchGamesIntent
+    var intentZone : SearchZonesIntent
+    var intentEditor : SearchEditorsIntent
+    
+    init(games: GameList, zones: ZoneList, editors: EditorList){
+        self.games = games
+        self.zones = zones
+        self.editors = editors
+        self.intentFestival = SearchFestivalIntent()
+        self.intentGame = SearchGamesIntent(gameList: games)
+        self.intentZone = SearchZonesIntent(zoneList: zones)
+        self.intentEditor = SearchEditorsIntent(editorList: editors)
+        let _  = self.festival.$festivalState.sink(receiveValue: stateChanged)
+    }
     
     let columns = [
         GridItem(.adaptive(minimum: 150))
     ]
     
+   
+    
+    func stateChanged(state: FestivalState){
+        switch state {
+        
+        default: return
+        }
+    }
+    
     var body: some View {
-        return NavigationView {
+        NavigationView {
+            if festival.festivalState == .loaded {
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
                         Spacer()
@@ -63,10 +90,16 @@ struct ContentView: View {
                         .padding(.horizontal)
                 }
             }
+            }else{
+                Text("LOADING...")
+            }
         }
+        .onAppear(perform: {
+            intentFestival.loadFestival()
+        })
     }
 }
-
+/*
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(
@@ -75,4 +108,4 @@ struct ContentView_Previews: PreviewProvider {
             exhibitors: [Exhibitor(id: 1, name: "exposant1",  exhibitorLocalisation: [Zone(name: "Pour tous"), Zone(name: "Ambiance")])]*/
         )
     }
-}
+}*/

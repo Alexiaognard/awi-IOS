@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct FestivalListData : Codable{
+    var resultCount : Int
+    var results : [FestivalData]
+}
+
 struct zoneListData : Codable {
     var resultCount : Int
     var results : [ZoneData]
@@ -59,8 +64,6 @@ struct GameData : Codable{
 
 struct FestivalData : Codable {
     var festivalId : Int
-    var festivalName : String?
-    var festivalData : Date
 }
 
 /*
@@ -73,13 +76,78 @@ struct APIRetriever {
     static var urlEditorList="/editor/list"
     static var urlZoneList="/zone/list"
     
-    static func loadGamesFromAPI(/*url surl: String,*/ endofrequest: @escaping (Result<[Game],HttpRequestError>) -> Void){
-            guard let url = URL(string: urlCurrentFestival) else {
-                endofrequest(.failure(.badURL(urlCurrentFestival)))
-                return
-            }
-            self.loadGamesFromAPI(url: url, endofrequest: endofrequest)
+    
+ 
+    
+    static func loadFestivalFromAPI(/*url surl: String,*/ endofrequest: @escaping (Result<Int,HttpRequestError>) -> Void){
+        guard let url = URL(string: APIRetriever.urlCurrentFestival) else {
+            endofrequest(.failure(.badURL(APIRetriever.urlCurrentFestival)))
+            return
         }
+        self.loadGamesFromJsonData(url: url, endofrequest: endofrequest)
+    }
+
+        private static func loadGamesFromJsonData(url: URL, endofrequest: @escaping (Result<Int,HttpRequestError>) -> Void, ItuneApiRequest: Bool = true){
+            let request = URLRequest(url: url)
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let data = data {
+                    let decodedData : Decodable?
+                    if ItuneApiRequest{
+                        decodedData = try? JSONDecoder().decode(FestivalListData.self, from: data)
+                    }
+                    else{
+                        decodedData = try? JSONDecoder().decode([FestivalData].self, from: data)
+                    }
+                    guard let decodedResponse = decodedData else {
+                        DispatchQueue.main.async { endofrequest(.failure(.JsonDecodingFailed)) }
+                        return
+                    }
+                    var tracksData : [FestivalData]
+                    if ItuneApiRequest{
+                        tracksData = (decodedResponse as! FestivalListData).results
+                    }
+                    else{
+                        tracksData = (decodedResponse as! [FestivalData])
+                    }
+                    self.setFestivalId(data: tracksData)
+                    DispatchQueue.main.async {
+                        endofrequest(.success(1))
+                    }
+                }
+                else{
+                    DispatchQueue.main.async {
+                        if let error = error {
+                            guard let error = error as? URLError else {
+                                endofrequest(.failure(.unknown))
+                                return
+                            }
+                            endofrequest(.failure(.failingURL(error)))
+                        }
+                        else{
+                            guard let response = response as? HTTPURLResponse else{
+                                endofrequest(.failure(.unknown))
+                                return
+                            }
+                            guard response.statusCode == 200 else {
+                                endofrequest(.failure(.requestFailed))
+                                return
+                            }
+                            endofrequest(.failure(.unknown))
+                        }
+                    }
+                }
+            }.resume()
+        }
+    
+    static func loadGamesFromAPI(/*url surl: String,*/ endofrequest: @escaping (Result<[Game],HttpRequestError>) -> Void){
+        guard let url = URL(string: APIRetriever.urlGameList) else {
+            endofrequest(.failure(.badURL(APIRetriever.urlGameList)))
+            return
+        }
+        self.loadGamesFromAPI(url: url, endofrequest: endofrequest)
+    }
+    
+    
         static func loadGamesFromAPI(url: URL, endofrequest: @escaping (Result<[Game],HttpRequestError>) -> Void){
             self.loadGamesFromJsonData(url: url, endofrequest: endofrequest, ItuneApiRequest: true)
         }
@@ -182,5 +250,10 @@ struct APIRetriever {
             zones.append(zone)
         }
         return zones
+    }
+    
+    static func setFestivalId(data: [FestivalData]) {
+        let festival = Festival.festivalSingleton
+        festival.festivalId = data[0].festivalId
     }
 }

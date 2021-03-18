@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct AWI_FestivalJeuxApp: App {
+    @StateObject var games = GameList()
+    @StateObject var editors = EditorList()
+    @StateObject var zones = ZoneList()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(games: games, zones: zones, editors: editors)
         }
     }
 }

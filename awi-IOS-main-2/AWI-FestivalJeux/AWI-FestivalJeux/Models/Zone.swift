@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Zone : Codable {
+class Zone : Identifiable {
     var zoneId : Int
     var name : String
     

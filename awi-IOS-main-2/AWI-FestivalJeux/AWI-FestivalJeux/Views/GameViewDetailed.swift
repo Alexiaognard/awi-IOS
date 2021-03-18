@@ -16,9 +16,11 @@ struct GameViewDetailed: View {
             
             Divider()
             
-            HStack{
-                Image(systemName: "clock.arrow.circlepath")
-                Text("Durée : \(game.gameDuration) min")
+            if let duration = game.gameDuration {
+                HStack{
+                    Image(systemName: "clock.arrow.circlepath")
+                    Text("Durée : \(duration) min")
+                }
             }
             HStack{
                 Image(systemName: "person.3.fill")
@@ -47,8 +49,10 @@ struct GameViewDetailed: View {
     }
 }
 
+/*
 struct GameViewDetailed_Previews: PreviewProvider {
     static var previews: some View {
         GameViewDetailed(game: Game(id: 1, name: "Monopoly", gameMinimumAge: 6, gameDuration: 30, isPrototype: false, gameMinimumPlayers: 2, gameMaximumPlayers: 6, gameType: "Famille", gameEditor: Editor(id: 1, name: "Editeur1"), gameZone: Zone(name: "Famille"), isAP: false, notice: "ceci est une notice"))
     }
 }
+*/

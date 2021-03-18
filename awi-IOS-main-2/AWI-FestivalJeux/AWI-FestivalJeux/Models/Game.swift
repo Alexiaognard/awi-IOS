@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Game : Identifiable, Encodable {
+class Game : Identifiable {
     private(set) var gameId : Int
     private(set) var gameName : String
     private(set) var gameMinimumAge : Int

@@ -42,7 +42,7 @@ struct EditorViewDetailed: View {
     }
 }
 
-struct EditorViewDetailed_Previews: PreviewProvider {
+/*struct EditorViewDetailed_Previews: PreviewProvider {
     static var previews: some View {
         EditorViewDetailed(
             editor: Editor(id: 1, name: "Hasbro"),
@@ -51,4 +51,4 @@ struct EditorViewDetailed_Previews: PreviewProvider {
             ],
             localisation: [Zone(name: "Famille"), Zone(name: "Pour tous")])
     }
-}
+}*/
