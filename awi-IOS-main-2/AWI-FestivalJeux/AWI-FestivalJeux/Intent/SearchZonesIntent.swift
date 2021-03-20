@@ -15,12 +15,19 @@ class SearchZonesIntent {
         self.zoneList = zoneList
     }
     
-    func loadGames(){
+    func loadZones(){
         self.zoneList.zoneListState = .loading
         //Faire appel à l'API
+        APIRetriever.loadZonesFromAPI(endofrequest: zonesLoaded)
     }
     
-    func gamesLoaded(){
-        self.zoneList.zoneListState = .loaded
+    func zonesLoaded(results: Result<[Zone],HttpRequestError>){
+        switch results{
+        case let .success(data):
+            self.zoneList.zoneListState = .loaded(data)
+        case let .failure(error):
+            self.zoneList.zoneListState = .loadingError(error)
+        }
+        
     }
 }

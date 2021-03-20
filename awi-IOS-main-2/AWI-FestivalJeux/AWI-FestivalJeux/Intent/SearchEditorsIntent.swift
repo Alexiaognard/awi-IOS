@@ -15,12 +15,18 @@ class SearchEditorsIntent {
         self.editorList = editorList
     }
     
-    func loadGames(){
+    func loadEditors(){
         self.editorList.editorListState = .loading
         //Faire appel à l'API
+        APIRetriever.loadEditorsFromAPI(endofrequest: editorsLoaded)
     }
     
-    func gamesLoaded(){
-        self.editorList.editorListState = .loaded
+    func editorsLoaded(results: Result<[Editor],HttpRequestError>){
+        switch results{
+        case let .success(data):
+            editorList.editorListState = .loaded(data)
+        case let .failure(error):
+            editorList.editorListState = .loadingError(error)
+        }
     }
 }

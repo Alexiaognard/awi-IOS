@@ -12,9 +12,11 @@ struct AWI_FestivalJeuxApp: App {
     @StateObject var games = GameList()
     @StateObject var editors = EditorList()
     @StateObject var zones = ZoneList()
+    @StateObject var festival = Festival()
     var body: some Scene {
         WindowGroup {
-            ContentView(games: games, zones: zones, editors: editors)
+            
+            ContentView(games: games, zones: zones, editors: editors, festival: festival)
         }
     }
 }

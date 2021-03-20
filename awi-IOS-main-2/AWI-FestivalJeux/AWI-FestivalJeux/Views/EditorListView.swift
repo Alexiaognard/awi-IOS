@@ -9,6 +9,15 @@ import SwiftUI
 
 struct EditorListView: View {
     @ObservedObject var editors : EditorList
+    var intent : SearchEditorsIntent
+    
+    
+    init(editors: EditorList){
+        self.editors = editors
+        self.intent = SearchEditorsIntent(editorList: editors)
+        self.intent.loadEditors()
+    }
+    
     var body: some View {
         List{
             ForEach(self.editors.editorList){ editor in

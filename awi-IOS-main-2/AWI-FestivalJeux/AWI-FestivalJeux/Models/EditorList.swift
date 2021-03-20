@@ -10,13 +10,15 @@ import Foundation
 enum EditorListState: CustomStringConvertible{
     case waiting
     case loading
-    case loaded
+    case loadingError(Error)
+    case loaded([Editor])
     
     var description: String{
         switch self {
         case .waiting : return "waiting"
         case .loading : return "loading"
-        case .loaded : return "loaded"
+        case .loadingError(let error): return "loading error : \(error)"
+        case .loaded(let editors) : return "loaded \(editors.count) editors"
         }
         
     }
@@ -26,10 +28,17 @@ class EditorList: ObservableObject{
     @Published var editorListState: EditorListState = .waiting{
         didSet{
             switch self.editorListState{
+            case let .loaded(data):
+                self.new(data)
             default: return
             }
         }
     }
     
     @Published var editorList = [Editor]()
+    
+    func new(_ editors: [Editor]){
+        self.editorList = editors
+        self.editorListState = .waiting
+    }
 }

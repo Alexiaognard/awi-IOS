@@ -11,19 +11,19 @@ struct ContentView: View {
     @ObservedObject var games : GameList
     @ObservedObject var zones : ZoneList
     @ObservedObject var editors : EditorList
- 
-    var festival = Festival.festivalSingleton
+    @ObservedObject var festival : Festival
     
     var intentFestival : SearchFestivalIntent
     var intentGame : SearchGamesIntent
     var intentZone : SearchZonesIntent
     var intentEditor : SearchEditorsIntent
     
-    init(games: GameList, zones: ZoneList, editors: EditorList){
+    init(games: GameList, zones: ZoneList, editors: EditorList, festival: Festival){
         self.games = games
         self.zones = zones
         self.editors = editors
-        self.intentFestival = SearchFestivalIntent()
+        self.festival = festival
+        self.intentFestival = SearchFestivalIntent(festival: festival)
         self.intentGame = SearchGamesIntent(gameList: games)
         self.intentZone = SearchZonesIntent(zoneList: zones)
         self.intentEditor = SearchEditorsIntent(editorList: editors)
@@ -37,16 +37,42 @@ struct ContentView: View {
    
     
     func stateChanged(state: FestivalState){
+        print("state changing from "+state.description)
         switch state {
-        
+        case .loaded:
+            self.intentFestival.festivalLoaded()
+            self.showMenu = true
+        case .over:
+            self.showMenu = true
         default: return
         }
     }
     
+    @State private var showMenu = false
+    
+    
     var body: some View {
         NavigationView {
-            if festival.festivalState == .loaded {
-            GeometryReader { geometry in
+            /*switch $festival.festivalState {
+            case let FestivalState.loaded(data):
+            return Text("aaa")
+            default: return Text("bbb")
+            }*/
+           /*if showMenu {
+            Text("aaa")
+           }else{
+            Text("not over "+showMenu.description+" "+self.festival.festivalState.description)
+                .onAppear(perform: {
+                    intentFestival.loadFestival()
+                })
+                .opacity(self.showMenu ? 0 : 1)
+           }*/
+            /* Fonctionne
+             Text(festival.festivalState.description).onAppear(perform: {
+                intentFestival.loadFestival()
+            })*/
+            
+                GeometryReader { geometry in
                 ZStack(alignment: .leading) {
                         Spacer()
                         LazyVGrid(columns: columns, spacing: 70) {
@@ -61,6 +87,9 @@ struct ContentView: View {
                                         .font(.headline)
                                 }
                             }
+                            .onAppear(perform: {
+                                intentFestival.loadFestival()
+                            })
                             .navigationBarTitle("Menu")
                             
                             NavigationLink(destination: EditorListView(editors: editors)) {
@@ -89,16 +118,8 @@ struct ContentView: View {
                         }
                         .padding(.horizontal)
                 }
-            }
-            }else{
-                Text("LOADING...")
-            }
-        }
-        .onAppear(perform: {
-            intentFestival.loadFestival()
-        })
-    }
-}
+                }}}}
+
 /*
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

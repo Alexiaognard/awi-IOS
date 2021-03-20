@@ -6,24 +6,33 @@
 //
 
 import Foundation
+import SwiftUI
+import Combine
 
 class SearchFestivalIntent {
-    var festival : Festival = Festival.festivalSingleton
+    @ObservedObject var festival : Festival
     
+    init(festival: Festival){
+        self.festival = festival
+    }
     
     func loadFestival(){
         self.festival.festivalState = .loading
         //Faire appel à l'API
-        APIRetriever.loadFestivalFromAPI(endofrequest: festivalLoaded)
+        APIRetriever.loadFestivalFromAPI(endofrequest: festivalJsonLoaded)
     }
     
-    func festivalLoaded(result: Result<Int, HttpRequestError>){
+    func festivalJsonLoaded(result: Result<Festival, HttpRequestError>){
         switch result {
         case let .success(data):
-            self.festival.festivalState = .loaded
+            self.festival.festivalState = .loaded(data)
         case let .failure(error):
             self.festival.festivalState = .loadingError(error)
         }
         
+    }
+    
+    func festivalLoaded(){
+        self.festival.festivalState = .over
     }
 }

@@ -14,15 +14,16 @@ enum FestivalState : CustomStringConvertible, Equatable {
         default: return false
         }
     }
-    
-    case loaded
+    case over
+    case loaded(Festival)
     case loadingError(Error)
     case loading
     case waiting
     
     var description: String{
         switch self{
-        case .loaded : return "loaded"
+        case .over : return "over"
+        case .loaded(let festival) : return "loaded festival id :\(festival.festivalId)"
         case .loadingError(let error) : return "loading error : \(error)"
         case .loading : return "loading"
         case .waiting : return "waiting"
@@ -30,18 +31,23 @@ enum FestivalState : CustomStringConvertible, Equatable {
     }
 }
 
-class Festival {
+class Festival: ObservableObject {
     @Published var festivalState: FestivalState = .waiting{
         didSet{
             switch self.festivalState {
+            case let .loaded(data):
+                self.festivalId = data.festivalId
             default :
                 return
             }
         }
     }
-    static let festivalSingleton = Festival()
-    var festivalId = -1
+    @Published var festivalId : String
 
-    
-    private init(){}
+    init(festivalId: String){
+        self.festivalId = festivalId
+    }
+    init(){
+        self.festivalId = ""
+    }
 }

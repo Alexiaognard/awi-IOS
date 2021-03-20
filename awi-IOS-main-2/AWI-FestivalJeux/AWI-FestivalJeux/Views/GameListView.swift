@@ -13,7 +13,8 @@ struct GameListView: View {
     
     init(games: GameList){
         self.games = games
-        intent = SearchGamesIntent(gameList: games)
+        self.intent = SearchGamesIntent(gameList: games)
+        self.intent.loadGames()
     }
     
     var body: some View {

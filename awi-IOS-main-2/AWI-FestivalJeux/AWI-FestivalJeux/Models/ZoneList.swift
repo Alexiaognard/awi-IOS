@@ -10,13 +10,15 @@ import SwiftUI
 enum ZoneListState: CustomStringConvertible {
     case waiting
     case loading
-    case loaded
+    case loadingError(Error)
+    case loaded([Zone])
     
     var description: String {
         switch self {
         case .waiting : return "waiting"
         case .loading : return "loading"
-        case .loaded : return "loaded"
+        case .loadingError(let error): return "loading error : \(error)"
+        case .loaded(let zones) : return "loaded \(zones.count) zones"
         }
     }
 }
@@ -25,10 +27,17 @@ class ZoneList : ObservableObject {
     @Published var zoneListState : ZoneListState = .waiting {
         didSet{
             switch self.zoneListState {
+            case let .loaded(data):
+                self.new(data)
             default: return
             }
         }
     }
     
     @Published var zoneList = [Zone]()
+    
+    func new(_ zones: [Zone]){
+        self.zoneList = zones
+        self.zoneListState = .waiting
+    }
 }
