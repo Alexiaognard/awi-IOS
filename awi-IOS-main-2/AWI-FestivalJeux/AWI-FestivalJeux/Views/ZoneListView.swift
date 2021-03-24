@@ -11,10 +11,9 @@ struct ZoneListView: View {
     @ObservedObject var zones : ZoneList
     var intent : SearchZonesIntent
     
-    init(zones : ZoneList){
+    init(zones : ZoneList, festival: Festival){
         self.zones = zones
-        self.intent = SearchZonesIntent(zoneList: zones)
-        self.intent.loadZones()
+        self.intent = SearchZonesIntent(zoneList: zones, festival: festival)
     }
     var body: some View {
         List{
@@ -30,8 +29,8 @@ struct ZoneListView: View {
     }
 }
 
-struct ZoneListView_Previews: PreviewProvider {
+/*struct ZoneListView_Previews: PreviewProvider {
     static var previews: some View {
         ZoneListView(zones: ZoneList())
     }
-}
+}*/

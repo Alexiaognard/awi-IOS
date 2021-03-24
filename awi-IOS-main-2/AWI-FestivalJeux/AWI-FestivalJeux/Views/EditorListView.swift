@@ -12,10 +12,9 @@ struct EditorListView: View {
     var intent : SearchEditorsIntent
     
     
-    init(editors: EditorList){
+    init(editors: EditorList, festival: Festival){
         self.editors = editors
-        self.intent = SearchEditorsIntent(editorList: editors)
-        self.intent.loadEditors()
+        self.intent = SearchEditorsIntent(editorList: editors, festival: festival)
     }
     
     var body: some View {
@@ -29,14 +28,15 @@ struct EditorListView: View {
                 .navigationBarTitle("Liste des Editeurs")
             }
         }
+        .onAppear(perform: intent.loadEditors)
     }
 }
 
-struct EditorListView_Previews: PreviewProvider {
+/*struct EditorListView_Previews: PreviewProvider {
     static var previews: some View {
         EditorListView(editors: EditorList() /*[
             Editor(id:1, name: "Alexia"),
             Editor(id: 2, name: "Alexia2")
         ]*/)
     }
-}
+}*/

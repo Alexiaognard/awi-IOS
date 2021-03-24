@@ -32,6 +32,7 @@ class GameList: ObservableObject{
             case let .loaded(data):
                 self.new(games: data)
             case let .loadingError(error):
+                print(error)
                 //Si une erreur pendant le chargement des jeux
                 return
             default :

@@ -7,6 +7,25 @@
 
 import SwiftUI
 
+extension UIColor {
+    public static var newGreen: UIColor {
+        return UIColor(red: 107/255, green: 164/255, blue: 113/255, alpha: 1.0)
+    }
+}
+extension Color {
+    public init(decimalRed red: Double, green: Double, blue: Double) {
+        self.init(red: red / 255, green: green / 255, blue: blue / 255)
+    }
+    
+    public static var newGreen: Color {
+        return Color(red: 107/255, green: 164/255, blue: 113/255)
+    }
+    public static var newRed: Color {
+        return Color(decimalRed: 173/255, green: 79/255, blue: 79/255)
+    }
+    
+
+}
 struct ContentView: View {
     @ObservedObject var games : GameList
     @ObservedObject var zones : ZoneList
@@ -14,9 +33,6 @@ struct ContentView: View {
     @ObservedObject var festival : Festival
     
     var intentFestival : SearchFestivalIntent
-    var intentGame : SearchGamesIntent
-    var intentZone : SearchZonesIntent
-    var intentEditor : SearchEditorsIntent
     
     init(games: GameList, zones: ZoneList, editors: EditorList, festival: Festival){
         self.games = games
@@ -24,9 +40,6 @@ struct ContentView: View {
         self.editors = editors
         self.festival = festival
         self.intentFestival = SearchFestivalIntent(festival: festival)
-        self.intentGame = SearchGamesIntent(gameList: games)
-        self.intentZone = SearchZonesIntent(zoneList: zones)
-        self.intentEditor = SearchEditorsIntent(editorList: editors)
         let _  = self.festival.$festivalState.sink(receiveValue: stateChanged)
     }
     
@@ -37,22 +50,22 @@ struct ContentView: View {
    
     
     func stateChanged(state: FestivalState){
-        print("state changing from "+state.description)
+        print("state changing from "+state.description+" showMenu : "+self.showMenu.description)
         switch state {
         case .loaded:
             self.intentFestival.festivalLoaded()
-            self.showMenu = true
         case .over:
-            self.showMenu = true
+            print("over")
+            self.showMenu = false
         default: return
         }
     }
     
-    @State private var showMenu = false
+    @State private var showMenu = true
     
     
     var body: some View {
-        NavigationView {
+      
             /*switch $festival.festivalState {
             case let FestivalState.loaded(data):
             return Text("aaa")
@@ -71,13 +84,23 @@ struct ContentView: View {
              Text(festival.festivalState.description).onAppear(perform: {
                 intentFestival.loadFestival()
             })*/
+            /*
+            if festival.festivalState == .loading {
+                Text("aa")
+            }else{
+                Text("bb")
+            }*/
             
-                GeometryReader { geometry in
-                ZStack(alignment: .leading) {
+                
+        NavigationView {
+            
+                    GeometryReader { geometry in
                         Spacer()
-                        LazyVGrid(columns: columns, spacing: 70) {
-                            
-                            NavigationLink(destination: GameListView(games: games)) {
+                        ZStack(alignment: .leading) {
+                                
+                                LazyVGrid(columns: columns, spacing: 70) {
+                                    
+                            NavigationLink(destination: GameListView(games: games, festival: self.festival)) {
                                 VStack {
                                     Image(systemName: "gamecontroller")
                                         .foregroundColor(.black)
@@ -87,12 +110,13 @@ struct ContentView: View {
                                         .font(.headline)
                                 }
                             }
+                            .padding(.all,50)
                             .onAppear(perform: {
-                                intentFestival.loadFestival()
+                               intentFestival.loadFestival()
                             })
-                            .navigationBarTitle("Menu")
                             
-                            NavigationLink(destination: EditorListView(editors: editors)) {
+                            
+                            NavigationLink(destination: EditorListView(editors: editors, festival: self.festival)) {
                                 VStack {
                                     Image(systemName: "pencil")
                                         .foregroundColor(.black)
@@ -102,9 +126,8 @@ struct ContentView: View {
                                         .font(.headline)
                                 }
                             }
-                            .navigationBarTitle("Menu")
                             
-                            NavigationLink(destination: ZoneListView(zones: zones)) {
+                            NavigationLink(destination: ZoneListView(zones: zones, festival: self.festival)) {
                                 VStack {
                                     Image(systemName: "house")
                                         .foregroundColor(.black)
@@ -114,19 +137,20 @@ struct ContentView: View {
                                         .font(.headline)
                                 }
                             }
-                            .navigationBarTitle("Menu")
                         }
-                        .padding(.horizontal)
-                }
-                }}}}
+                        }
+                    }
+                    .navigationBarTitle("Menu")
+        }
+        .navigationBarColor(backgroundColor: .newGreen, tintColor: .white)
+                            
+                           
+    }
+}
 
-/*
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(
-            /*games: [Game(id: 1, name: "Monopoly", gameMinimumAge: 6, gameDuration: 30, isPrototype: false, gameMinimumPlayers: 2, gameMaximumPlayers: 6, gameType: "Famille", gameEditor: Editor(id: 1, name: "Editeur1"), gameZone: Zone(name: "Famille"), isAP: false)],
-            editors: [Editor(id:1, name: "Editor1"), Editor(id:2, name: "Editor2")],
-            exhibitors: [Exhibitor(id: 1, name: "exposant1",  exhibitorLocalisation: [Zone(name: "Pour tous"), Zone(name: "Ambiance")])]*/
-        )
+        ContentView(games: GameList(), zones: ZoneList(), editors: EditorList(), festival: Festival())
     }
-}*/
+}

@@ -8,11 +8,11 @@
 import Foundation
 
 class Zone : Identifiable {
-    var zoneId : Int
+    var zoneId : String
     var name : String
     
     
-    init(zoneId: Int, name:String){
+    init(zoneId: String, name:String){
         self.zoneId = zoneId
         self.name = name
     }

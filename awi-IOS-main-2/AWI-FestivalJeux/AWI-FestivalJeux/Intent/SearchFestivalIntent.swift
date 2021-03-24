@@ -17,9 +17,13 @@ class SearchFestivalIntent {
     }
     
     func loadFestival(){
-        self.festival.festivalState = .loading
-        //Faire appel à l'API
-        APIRetriever.loadFestivalFromAPI(endofrequest: festivalJsonLoaded)
+        switch festival.festivalState {
+        case .waiting:
+            self.festival.festivalState = .loading
+            //Faire appel à l'API
+            APIRetriever.loadFestivalFromAPI(endofrequest: festivalJsonLoaded)
+        default: return
+        }
     }
     
     func festivalJsonLoaded(result: Result<Festival, HttpRequestError>){
@@ -34,5 +38,7 @@ class SearchFestivalIntent {
     
     func festivalLoaded(){
         self.festival.festivalState = .over
+    
+        
     }
 }

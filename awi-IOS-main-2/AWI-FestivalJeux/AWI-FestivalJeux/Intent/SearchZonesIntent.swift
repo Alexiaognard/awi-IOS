@@ -10,15 +10,17 @@ import SwiftUI
 
 class SearchZonesIntent {
     @ObservedObject var zoneList : ZoneList
+    @ObservedObject var festival : Festival
     
-    init(zoneList: ZoneList) {
+    init(zoneList: ZoneList, festival: Festival) {
         self.zoneList = zoneList
+        self.festival = festival
     }
     
     func loadZones(){
         self.zoneList.zoneListState = .loading
         //Faire appel à l'API
-        APIRetriever.loadZonesFromAPI(endofrequest: zonesLoaded)
+        APIRetriever.loadZonesFromAPI(endofrequest: zonesLoaded, festivalId: festival.festivalId)
     }
     
     func zonesLoaded(results: Result<[Zone],HttpRequestError>){

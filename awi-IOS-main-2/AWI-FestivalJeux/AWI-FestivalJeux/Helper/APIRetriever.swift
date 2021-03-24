@@ -7,61 +7,76 @@
 
 import Foundation
 
-struct FestivalListData : Codable{
-    var results : [FestivalData]
-}
-
-struct zoneListData : Codable {
-    var results : [ZoneData]
-}
-
-struct EditorListData : Codable{
-    var results : [EditorData]
-}
-
-struct GameListData : Codable{
-    var results : [GameData]
-}
-
-struct ReservedGameListData : Codable{
-    var results : [ReservedGameData]
-}
 
 struct ZoneData : Codable{
-    var zoneId : Int
+    var zoneId : String
     var zoneName : String
+    
+    enum CodingKeys: String, CodingKey{
+        case zoneId = "_id"
+        case zoneName
+    }
 }
 
 struct EditorData : Codable{
-    var editorId : Int
+    var editorId : String
     var editorName : String
+    
+    enum CodingKeys : String, CodingKey {
+        case editorId = "_id"
+        case editorName
+    }
+}
+
+
+struct ReservationData : Codable {
+    var reservedGame : [ReservedGameData]
+    
+    enum CodingKeys: String, CodingKey {
+        case reservedGame = "reservationReservedGame"
+    }
 }
 
 struct ReservedGameData : Codable {
-    var reservedGameId : Int
-    var reservedGame : GameData
-    var reservedGameZone : ZoneData
-    var reservedGameAP : Bool
+    var isAP : Bool
+    var game : GameData
+    var zone : ZoneData
     
-    enum CodingKeys: String, CodingKey {
-        case reservedGameId = "_id"
-        case reservedGame = "reservationReservedGame"
-        case reservedGameZone = "reservationReservedSpace"
-        case reservedGameAP
+    enum CodingKeys: String, CodingKey{
+        case isAP = "reservedGameAP"
+        case game = "reservedGame"
+        case zone = "reservedGameZone"
     }
 }
 
 struct GameData : Codable{
-    var gameId : Int
+    var gameId : String
     var gameName : String
     var gameMinimumAge : Int
     var gameDuration : Int?
     var isPrototype : Bool
     var gameMinimumPlayers : Int
     var gameMaximumPlayers : Int
-    var gameType : String
+    var gameType : GameTypeData
     var gameEditor : EditorData
     var gameNotice : String
+    
+    enum CodingKeys: String, CodingKey{
+        case gameId = "_id"
+        case gameName
+        case gameMinimumAge
+        case gameDuration
+        case isPrototype
+        case gameMinimumPlayers
+        case gameMaximumPlayers
+        case gameType
+        case gameEditor
+        case gameNotice
+    }
+}
+
+struct GameTypeData : Codable {
+    var gameTypeName : String
 }
 
 struct FestivalData : Codable {
@@ -77,9 +92,9 @@ struct FestivalData : Codable {
 struct APIRetriever {
     static var api="https://awi-api.herokuapp.com"
     static var urlCurrentFestival=api+"/festival/current/"
-    static var urlGameList="/game/list/festival"
-    static var urlEditorList="/editor/list"
-    static var urlZoneList="/zone/list"
+    static var urlGameList=api+"/game/list/festival"
+    static var urlEditorList=api+"/editor/list"
+    static var urlZoneList=api+"/zone/list"
     
     
  
@@ -97,9 +112,10 @@ struct APIRetriever {
             URLSession.shared.dataTask(with: request) { data, response, error in
                 if let data = data {
                     let decodedData : Decodable?
+                    //Print the received JSON
                     if let jsonString = String(data: data, encoding: .utf8) {
                                 print("desc : "+jsonString)
-                             }
+                    }
                     /*if ItuneApiRequest{
                         decodedData = try? JSONDecoder().decode(FestivalListData.self, from: data)
                     }
@@ -147,9 +163,9 @@ struct APIRetriever {
             }.resume()
         }
     
-    static func loadGamesFromAPI(/*url surl: String,*/ endofrequest: @escaping (Result<[Game],HttpRequestError>) -> Void){
-        guard let url = URL(string: APIRetriever.urlGameList) else {
-            endofrequest(.failure(.badURL(APIRetriever.urlGameList)))
+    static func loadGamesFromAPI(/*url surl: String,*/ endofrequest: @escaping (Result<[Game],HttpRequestError>) -> Void, festivalId: String){
+        guard let url = URL(string: APIRetriever.urlGameList+"/"+festivalId) else {
+            endofrequest(.failure(.badURL(APIRetriever.urlGameList+"/"+festivalId)))
             return
         }
         self.loadGamesFromAPI(url: url, endofrequest: endofrequest)
@@ -157,24 +173,31 @@ struct APIRetriever {
     
     
         static func loadGamesFromAPI(url: URL, endofrequest: @escaping (Result<[Game],HttpRequestError>) -> Void){
-            self.loadGamesFromJsonData(url: url, endofrequest: endofrequest, ItuneApiRequest: true)
+            self.loadGamesFromJsonData(url: url, endofrequest: endofrequest)
         }
 
-        private static func loadGamesFromJsonData(url: URL, endofrequest: @escaping (Result<[Game],HttpRequestError>) -> Void, ItuneApiRequest: Bool = true){
+        private static func loadGamesFromJsonData(url: URL, endofrequest: @escaping (Result<[Game],HttpRequestError>) -> Void){
             let request = URLRequest(url: url)
             URLSession.shared.dataTask(with: request) { data, response, error in
                 if let data = data {
                     let decodedData : Decodable?
  
-                    decodedData = try? JSONDecoder().decode([ReservedGameData].self, from: data)
+                    //Print the received JSON
+                    if let jsonString = String(data: data, encoding: .utf8) {
+                                print("desc : "+jsonString)
+                    }
+                    
+                    decodedData = try? JSONDecoder().decode([ReservationData].self, from: data)
+  
+                    
                     
                     guard let decodedResponse = decodedData else {
                         DispatchQueue.main.async { endofrequest(.failure(.JsonDecodingFailed)) }
                         return
                     }
-                    var tracksData : [ReservedGameData]
+                    let tracksData : [ReservationData]
 
-                    tracksData = (decodedResponse as! [ReservedGameData])
+                    tracksData = (decodedResponse as! [ReservationData])
                     
                     guard let tracks = self.reservedGameDataToGames(data: tracksData) else{
                         DispatchQueue.main.async { endofrequest(.failure(.JsonDecodingFailed)) }
@@ -209,9 +232,9 @@ struct APIRetriever {
             }.resume()
         }
     
-    static func loadEditorsFromAPI(endofrequest: @escaping (Result<[Editor],HttpRequestError>) -> Void){
-        guard let url = URL(string: APIRetriever.urlEditorList) else {
-            endofrequest(.failure(.badURL(APIRetriever.urlEditorList)))
+    static func loadEditorsFromAPI(endofrequest: @escaping (Result<[Editor],HttpRequestError>) -> Void, festivalId: String){
+        guard let url = URL(string: APIRetriever.urlEditorList+"/"+festivalId) else {
+            endofrequest(.failure(.badURL(APIRetriever.urlEditorList+"/"+festivalId)))
             return
         }
         self.loadEditorsFromJsonData(url: url, endofrequest: endofrequest)
@@ -267,9 +290,9 @@ struct APIRetriever {
             }.resume()
         }
     
-    static func loadZonesFromAPI(endofrequest: @escaping (Result<[Zone],HttpRequestError>) -> Void){
-        guard let url = URL(string: APIRetriever.urlZoneList) else {
-            endofrequest(.failure(.badURL(APIRetriever.urlZoneList)))
+    static func loadZonesFromAPI(endofrequest: @escaping (Result<[Zone],HttpRequestError>) -> Void, festivalId : String){
+        guard let url = URL(string: APIRetriever.urlZoneList+"/"+festivalId) else {
+            endofrequest(.failure(.badURL(APIRetriever.urlZoneList+"/"+festivalId)))
             return
         }
         self.loadZonesFromJsonData(url: url, endofrequest: endofrequest)
@@ -325,8 +348,9 @@ struct APIRetriever {
             }.resume()
         }
     
-    static func reservedGameDataToGames(data: [ReservedGameData]) -> [Game]?{
+    static func reservedGameDataToGames(data: [ReservationData]) -> [Game]?{
         var games = [Game]()
+        var reservedGames : [ReservedGameData]
         var game : GameData
         var editor : Editor
         var zone : Zone
@@ -334,11 +358,14 @@ struct APIRetriever {
                /* guard (tdata.collectionId != nil) || (tdata.trackId != nil) else{
                     return nil
                 }*/
-                game = tdata.reservedGame
-                editor = editorDataToEditor(data: game.gameEditor)
-                zone = zoneDataToZone(data: tdata.reservedGameZone)
-                let track = Game(id: game.gameId, name: game.gameName, gameMinimumAge: game.gameMinimumAge, gameDuration: game.gameDuration, isPrototype: game.isPrototype, gameMinimumPlayers: game.gameMinimumPlayers, gameMaximumPlayers: game.gameMaximumPlayers, gameType: game.gameType, gameEditor: editor, gameZone: zone, isAP: tdata.reservedGameAP, notice: game.gameNotice)
-                games.append(track)
+                reservedGames = tdata.reservedGame
+                for reservedGame in reservedGames {
+                    game = reservedGame.game
+                    editor = editorDataToEditor(data: game.gameEditor)
+                    zone = zoneDataToZone(data: reservedGame.zone)
+                    let track = Game(id: game.gameId, name: game.gameName, gameMinimumAge: game.gameMinimumAge, gameDuration: game.gameDuration, isPrototype: game.isPrototype, gameMinimumPlayers: game.gameMinimumPlayers, gameMaximumPlayers: game.gameMaximumPlayers, gameType: game.gameType.gameTypeName, gameEditor: editor, gameZone: zone, isAP: reservedGame.isAP, notice: game.gameNotice)
+                    games.append(track)
+                }
             }
             return games
         }

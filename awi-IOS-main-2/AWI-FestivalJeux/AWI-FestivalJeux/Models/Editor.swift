@@ -9,10 +9,10 @@ import Foundation
 
 
 class Editor : Identifiable, Codable {
-    var editorId : Int
+    var editorId : String
     var editorName : String
     
-    init(id: Int, name:String){
+    init(id: String, name:String){
         self.editorId = id
         self.editorName = name
     }

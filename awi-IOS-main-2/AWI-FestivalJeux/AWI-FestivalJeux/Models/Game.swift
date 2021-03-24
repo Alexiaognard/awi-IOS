@@ -8,7 +8,7 @@
 import Foundation
 
 class Game : Identifiable {
-    private(set) var gameId : Int
+    private(set) var gameId : String
     private(set) var gameName : String
     private(set) var gameMinimumAge : Int
     private(set) var gameDuration : Int?
@@ -21,7 +21,7 @@ class Game : Identifiable {
     private(set) var isAP : Bool
     private(set) var notice : String
     
-    init(id: Int, name:String, gameMinimumAge: Int, gameDuration: Int?, isPrototype : Bool, gameMinimumPlayers: Int, gameMaximumPlayers : Int, gameType: String, gameEditor: Editor, gameZone: Zone, isAP: Bool, notice: String){
+    init(id: String, name:String, gameMinimumAge: Int, gameDuration: Int?, isPrototype : Bool, gameMinimumPlayers: Int, gameMaximumPlayers : Int, gameType: String, gameEditor: Editor, gameZone: Zone, isAP: Bool, notice: String){
         self.gameId = id
         self.gameName = name
         self.gameMinimumAge = gameMinimumAge
