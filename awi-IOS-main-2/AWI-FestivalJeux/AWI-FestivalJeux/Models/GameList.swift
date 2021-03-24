@@ -10,6 +10,7 @@ import SwiftUI
 import Combine
 
 enum GameListState: CustomStringConvertible{
+    case over
     case loaded([Game])
     case loadingError(Error)
     case loading
@@ -17,6 +18,7 @@ enum GameListState: CustomStringConvertible{
     
     var description: String{
         switch self{
+        case .over : return "over"
         case .loaded(let games) : return "loaded : \(games.count) games"
         case .loadingError(let error) : return "loading error : \(error)"
         case .loading : return "loading"

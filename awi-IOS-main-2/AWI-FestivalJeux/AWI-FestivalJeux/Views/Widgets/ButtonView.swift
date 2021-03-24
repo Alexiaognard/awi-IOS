@@ -24,11 +24,13 @@ struct ButtonView: View {
                         .fontWeight(.semibold)
                         .font(.title)
                 }
+            
             .padding(.all,7)
                 .foregroundColor(.white)
                 .background(Color.newGreen)
                 .cornerRadius(40)
         }
+        
     }
 }
 

@@ -18,13 +18,29 @@ class SearchGamesIntent : IntentFilter {
     }
     
     func loadGames(){
-        self.gameList.gameListState = .loading
-        
-        //Faire appel à l'API
-        APIRetriever.loadGamesFromAPI(endofrequest: gamesLoaded, festivalId: festival.festivalId)
+        switch gameList.gameListState {
+        case .waiting:
+            print("blablabla")
+            self.gameList.gameListState = .loading
+            //Faire appel à l'API
+            APIRetriever.loadGamesFromAPI(endofrequest: gamesJsonLoaded, festivalId: festival.festivalId)
+        default: return
+        }
     }
     
-    func gamesLoaded(result: Result<[Game], HttpRequestError>){
+    func refreshGames(){
+        switch self.gameList.gameListState{
+        case .over:
+            self.gameList.gameListState = .loading
+            
+            //Faire appel à l'API
+            APIRetriever.loadGamesFromAPI(endofrequest: gamesJsonLoaded, festivalId: festival.festivalId)
+            default: return
+        }
+        
+    }
+    
+    func gamesJsonLoaded(result: Result<[Game], HttpRequestError>){
         switch result {
         case let .success(data):
             print(data.description)
@@ -33,6 +49,10 @@ class SearchGamesIntent : IntentFilter {
             self.gameList.gameListState = .loadingError(error)
         }
         
+    }
+    
+    func gamesLoaded(){
+        self.gameList.gameListState = .over
     }
     
     func filter(filterOption: String) -> Void{

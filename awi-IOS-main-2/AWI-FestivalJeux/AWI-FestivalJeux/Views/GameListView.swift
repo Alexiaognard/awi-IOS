@@ -14,31 +14,42 @@ struct GameListView: View {
     init(games: GameList, festival: Festival){
         self.games = games
         self.intent = SearchGamesIntent(gameList: games, festival: festival)
+        let _  = self.games.$gameListState.sink(receiveValue: stateChanged)
+    }
+    
+    func stateChanged(state: GameListState){
+        switch state{
+        case .loaded:
+            self.intent.gamesLoaded()
+        default: return
+        }
+        
     }
     
     var body: some View {
             VStack{
                 Spacer()
                 HStack{
-                    DropDownMenu(filterOptions: [DropDownMenu.name,DropDownMenu.editor,DropDownMenu.zone], intent: self.intent)
                     Spacer()
-                    ButtonView(functionToCall: intent.loadGames, label: "Rafraîchir")
+                    ButtonView(functionToCall: intent.refreshGames, label: "Rafraîchir")
                 }
-                
+                HStack{
+                DropDownMenu(filterOptions: [DropDownMenu.name,DropDownMenu.editor,DropDownMenu.zone], intent: self.intent)
+                    Spacer()
+                }
         
                 List{
                     Section(header:EmptyView(),footer:EmptyView()){
                         ForEach(self.games.gameList){ game in
                             NavigationLink(destination: GameViewDetailed(game: game)) {
-                                ListView(game:game,showEverything: false)
+                                ListItemGame(game:game,showEverything: false)
                             }
-                            .navigationBarTitle("Liste des Jeux")
+                            .navigationBarTitle("Liste des jeux")
                         }
                     }
                 }
                 .onAppear(perform: intent.loadGames)
-              
-                
+
             }
         
     }

@@ -40,7 +40,8 @@ struct DropDownMenu: View {
                         .foregroundColor(.newGreen)
                     Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
                         .resizable()
-                        .foregroundColor(.black)
+                        .frame(width: 13, height: 6)
+                        .foregroundColor(.newGreen)
                 }.onTapGesture {
                     self.isExpanded.toggle()
                 }
@@ -54,6 +55,7 @@ struct DropDownMenu: View {
                     
                 }
             }
+            .padding()
         }
     }
 }

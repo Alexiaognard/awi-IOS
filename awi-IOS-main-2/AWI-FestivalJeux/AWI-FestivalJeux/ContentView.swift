@@ -50,7 +50,6 @@ struct ContentView: View {
    
     
     func stateChanged(state: FestivalState){
-        print("state changing from "+state.description+" showMenu : "+self.showMenu.description)
         switch state {
         case .loaded:
             self.intentFestival.festivalLoaded()
@@ -94,11 +93,10 @@ struct ContentView: View {
                 
         NavigationView {
             
-                    GeometryReader { geometry in
-                        Spacer()
-                        ZStack(alignment: .leading) {
+                    
+                        
                                 
-                                LazyVGrid(columns: columns, spacing: 70) {
+            VStack{
                                     
                             NavigationLink(destination: GameListView(games: games, festival: self.festival)) {
                                 VStack {
@@ -111,9 +109,7 @@ struct ContentView: View {
                                 }
                             }
                             .padding(.all,50)
-                            .onAppear(perform: {
-                               intentFestival.loadFestival()
-                            })
+                            
                             
                             
                             NavigationLink(destination: EditorListView(editors: editors, festival: self.festival)) {
@@ -126,22 +122,15 @@ struct ContentView: View {
                                         .font(.headline)
                                 }
                             }
+                            .padding(.all,50)
                             
-                            NavigationLink(destination: ZoneListView(zones: zones, festival: self.festival)) {
-                                VStack {
-                                    Image(systemName: "house")
-                                        .foregroundColor(.black)
-                                        .imageScale(.large)
-                                    Text("Zones")
-                                        .foregroundColor(.black)
-                                        .font(.headline)
-                                }
-                            }
-                        }
-                        }
+                        
                     }
                     .navigationBarTitle("Menu")
         }
+        .onAppear(perform: {
+           intentFestival.loadFestival()
+        })
         .navigationBarColor(backgroundColor: .newGreen, tintColor: .white)
                             
                            

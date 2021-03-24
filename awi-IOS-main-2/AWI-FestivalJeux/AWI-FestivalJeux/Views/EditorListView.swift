@@ -17,15 +17,16 @@ struct EditorListView: View {
         self.intent = SearchEditorsIntent(editorList: editors, festival: festival)
     }
     
+    
     var body: some View {
         List{
             ForEach(self.editors.editorList){ editor in
                 NavigationLink(destination: EditorViewDetailed(editor: editor)) {
                     VStack {
-                        Text("\(editor.editorName)")
+                        ListItemEditor(editor: editor)
                     }
                 }
-                .navigationBarTitle("Liste des Editeurs")
+                .navigationBarTitle("Liste des éditeurs")
             }
         }
         .onAppear(perform: intent.loadEditors)

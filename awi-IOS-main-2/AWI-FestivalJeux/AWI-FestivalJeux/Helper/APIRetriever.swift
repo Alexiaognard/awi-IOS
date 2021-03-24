@@ -93,7 +93,7 @@ struct APIRetriever {
     static var api="https://awi-api.herokuapp.com"
     static var urlCurrentFestival=api+"/festival/current/"
     static var urlGameList=api+"/game/list/festival"
-    static var urlEditorList=api+"/editor/list"
+    static var urlEditorList=api+"/editor/list/festival"
     static var urlZoneList=api+"/zone/list"
     
     

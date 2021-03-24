@@ -33,7 +33,6 @@ class SearchFestivalIntent {
         case let .failure(error):
             self.festival.festivalState = .loadingError(error)
         }
-        
     }
     
     func festivalLoaded(){

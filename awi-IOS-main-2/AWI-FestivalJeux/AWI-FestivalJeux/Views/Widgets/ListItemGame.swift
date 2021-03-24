@@ -9,16 +9,25 @@ import SwiftUI
 
 
 
-struct ListView: View {
-    var game: Game
-    var showEverything: Bool
+struct ListItemGame: View {
+    private var game: Game
+    private var showEverything: Bool
       
+    init(game: Game, showEverything: Bool){
+        self.game = game
+        self.showEverything = showEverything
+    }
+ 
+    
+    
       var body: some View {
           ZStack(alignment: .leading) {
               
               Color.newGreen
                 HStack{
                   VStack(alignment: .leading) {
+                    
+                    
                     Text(game.gameName)
                           .font(.headline)
                           .fontWeight(.bold)
@@ -46,7 +55,11 @@ struct ListView: View {
                                 .background(Color.newRed)
                                     .cornerRadius(5)
                             }
-                      
+                     
+                   
+                    
+                    
+                    
                   }
                   .padding(.horizontal, 5)
               }
@@ -58,6 +71,6 @@ struct ListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView(game: Game(id: "aa", name: "Monopoly", gameMinimumAge: 5, gameDuration: 301, isPrototype: false, gameMinimumPlayers: 2, gameMaximumPlayers: 10, gameType: "Familiale", gameEditor: Editor(id: "aa", name: "Hachette"), gameZone: Zone(zoneId: "aa", name: "Zone 1"), isAP: false, notice: "Tout le monde connaît les règles"),showEverything: false)
+        ListItemGame(game: Game(id: "aa", name: "Monopoly", gameMinimumAge: 5, gameDuration: 301, isPrototype: false, gameMinimumPlayers: 2, gameMaximumPlayers: 10, gameType: "Familiale", gameEditor: Editor(id: "aa", name: "Hachette"), gameZone: Zone(zoneId: "aa", name: "Zone 1"), isAP: false, notice: "Tout le monde connaît les règles"),showEverything:false)
     }
 }
