@@ -10,49 +10,89 @@ import SwiftUI
 struct GameViewDetailed: View {
     var game : Game
     var body: some View {
-        VStack{
-            Text("\(game.gameName)").font(.largeTitle)
-            Text("Editeur : \(game.gameEditor.editorName)").foregroundColor(.gray)
+        
+        HStack{
+            Spacer()
+            VStack(alignment: .leading){
+                Text("Editeur : \(game.gameEditor.editorName)")
+                    .foregroundColor(.gray)
+                    .font(.largeTitle)
             
-            Divider()
+            }
+            Spacer()
+        }
+        .padding()
+        HStack{
             
-            if let duration = game.gameDuration {
-                HStack{
-                    Image(systemName: "clock.arrow.circlepath")
-                    Text("Durée : \(duration) min")
+            VStack(alignment: .leading, spacing: 40){
+           
+
+                if let duration = game.gameDuration {
+                    HStack{
+                        Image(systemName: "clock.arrow.circlepath")
+                            .foregroundColor(.newGreen)
+                        Text("Durée : \(duration) min")
+                            .font(.title3)
+                    }
                 }
-            }
-            HStack{
-                Image(systemName: "person.3.fill")
-                Text("Nombre de joueurs : \(game.gameMinimumPlayers) - \(game.gameMaximumPlayers)")
-            }
-            HStack{
-                Image(systemName: "person.crop.circle.badge.questionmark")
-                Text("Age min: \(game.gameMinimumAge)")
-            }
-            HStack{
-                Image(systemName: "folder")
-                Text("Catégorie : \(game.gameType)")
-            }
-            HStack{
-                Image(systemName: "map")
-                Text("Localisation : \(game.gameZone.name)")
-            }
-            if (game.isPrototype){
-                Text("Il s'agit d'un prototype")
-            }
-            if (game.isAP){
-                Text("Venez découvrir ce jeu en avant-première !!")
-            }
+                
+                HStack{
+                    Image(systemName: "person.3.fill")
+                        .foregroundColor(.newGreen)
+                    Text("Nombre de joueurs : \(game.gameMinimumPlayers) - \(game.gameMaximumPlayers)")
+                        .font(.title3)
+                }
             
+                HStack{
+                    Image(systemName: "person.crop.circle.badge.questionmark")
+                        .foregroundColor(.newGreen)
+                    Text("Age min: \(game.gameMinimumAge)")
+                        .font(.title3)
+                }
+                HStack{
+                    Image(systemName: "folder")
+                        .foregroundColor(.newGreen)
+                    Text("Catégorie : \(game.gameType)")
+                        .font(.title3)
+                }
+                HStack{
+                    Image(systemName: "map")
+                        .foregroundColor(.newGreen)
+                    Text("Localisation : \(game.gameZone.name)")
+                        .font(.title3)
+                }
+                HStack{
+                    Image(systemName: "book")
+                        .foregroundColor(.newGreen)
+                    Text("Règle : \(game.notice)")
+                        .font(.title3)
+                }
+                if (game.isPrototype){
+                    Text("Il s'agit d'un prototype")
+                        .font(.title3)
+                }
+                if (game.isAP){
+                    Text("Venez découvrir ce jeu en avant-première !!")
+                        .font(.title3)
+                }
+                
+            }
+            .padding()
+            Spacer()
+        }
+        .navigationBarTitle(game.gameName)
+        Spacer()
+        
+    }
+}
+
+
+struct GameViewDetailed_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            GameViewDetailed(game: Game(id: "aa", name: "Monopoly", gameMinimumAge: 5, gameDuration: 30, isPrototype: false, gameMinimumPlayers: 3, gameMaximumPlayers: 10, gameType: "Familiale", gameEditor: Editor(id: "aa", name: "Hachette"), gameZone: Zone(zoneId: "aaa", name: "Zone 2"), isAP: false, notice: "Tout le monde connaît les règles."))
+            GameViewDetailed(game: Game(id: "aa", name: "Monopoly", gameMinimumAge: 5, gameDuration: 30, isPrototype: false, gameMinimumPlayers: 3, gameMaximumPlayers: 10, gameType: "Familiale", gameEditor: Editor(id: "aa", name: "Hachette"), gameZone: Zone(zoneId: "aaa", name: "Zone 2"), isAP: false, notice: "Tout le monde connaît les règles."))
         }
     }
 }
 
-/*
-struct GameViewDetailed_Previews: PreviewProvider {
-    static var previews: some View {
-        GameViewDetailed(game: Game(id: 1, name: "Monopoly", gameMinimumAge: 6, gameDuration: 30, isPrototype: false, gameMinimumPlayers: 2, gameMaximumPlayers: 6, gameType: "Famille", gameEditor: Editor(id: 1, name: "Editeur1"), gameZone: Zone(name: "Famille"), isAP: false, notice: "ceci est une notice"))
-    }
-}
-*/

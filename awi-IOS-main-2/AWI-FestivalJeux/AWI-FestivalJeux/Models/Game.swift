@@ -35,19 +35,5 @@ class Game : Identifiable {
         self.isAP = isAP
         self.notice = notice
     }
-    /*
-    enum CodingKeys: String, CodingKey{
-        case gameId
-        case gameName = "gameName"
-        case gameMinimumAge
-        case gameDuration
-        case isPrototype
-        case gameMinimumPlayers
-        case gameMaximumPlayers
-        case gameType
-        case gameEditor
-        case gameZone
-        case isAP
-        case notice
-    }*/
+ 
 }
