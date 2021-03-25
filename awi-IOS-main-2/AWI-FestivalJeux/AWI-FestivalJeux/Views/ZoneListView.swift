@@ -15,17 +15,21 @@ struct ZoneListView: View {
         self.zones = zones
         self.intent = SearchZonesIntent(zoneList: zones, festival: festival)
     }
+    
     var body: some View {
         List{
             ForEach(self.zones.zoneList){ zone in
                 NavigationLink(destination: ZoneViewDetailed(zone: zone)) {
                     VStack {
-                        Text("\(zone.name)")
+                        ListItemZone(zone: zone)
                     }
                 }
-                .navigationBarTitle("Liste des zones")
             }
         }
+        .onAppear(perform: {
+            intent.loadZones()
+        })
+        .navigationBarTitle("Liste des zones")
     }
 }
 

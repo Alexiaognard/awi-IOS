@@ -20,7 +20,7 @@ class SearchGamesIntent : IntentFilter {
     func loadGames(){
         switch gameList.gameListState {
         case .waiting:
-            print("blablabla")
+            print(gameList.gameListState)
             self.gameList.gameListState = .loading
             //Faire appel à l'API
             APIRetriever.loadGamesFromAPI(endofrequest: gamesJsonLoaded, festivalId: festival.festivalId)
@@ -56,6 +56,6 @@ class SearchGamesIntent : IntentFilter {
     }
     
     func filter(filterOption: String) -> Void{
-        return
+        self.gameList.gameListState = .sorting(filterOption)
     }
 }

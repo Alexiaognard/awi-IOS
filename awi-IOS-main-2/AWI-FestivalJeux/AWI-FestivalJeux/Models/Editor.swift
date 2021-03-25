@@ -8,12 +8,20 @@
 import Foundation
 
 
-class Editor : Identifiable, Codable {
+class Editor : Identifiable {
     var editorId : String
     var editorName : String
     
     init(id: String, name:String){
         self.editorId = id
         self.editorName = name
+    }
+}
+
+class EditorGameList : Editor {
+    var gameList : [Game]
+    init(id: String, name: String, gameList: [Game]){
+        self.gameList = gameList
+        super.init(id: id, name: name)
     }
 }

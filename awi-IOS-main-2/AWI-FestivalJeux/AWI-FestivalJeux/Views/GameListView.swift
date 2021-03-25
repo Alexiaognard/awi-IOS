@@ -19,8 +19,9 @@ struct GameListView: View {
     
     func stateChanged(state: GameListState){
         switch state{
-        case .loaded:
+        case .loaded, .sorted:
             self.intent.gamesLoaded()
+        
         default: return
         }
         
@@ -28,7 +29,7 @@ struct GameListView: View {
     
     var body: some View {
             VStack{
-                Spacer()
+               
                 HStack{
                     Spacer()
                     ButtonView(functionToCall: intent.refreshGames, label: "Rafraîchir")
@@ -41,13 +42,11 @@ struct GameListView: View {
                 List{
                     Section(header:EmptyView(),footer:EmptyView()){
                         ForEach(self.games.gameList){ game in
-                            NavigationLink(destination: GameViewDetailed(game: game)) {
-                                ListItemGame(game:game,showEverything: false)
-                            }
-                            .navigationBarTitle("Liste des jeux")
+                            ListItemGame(game:game)
                         }
                     }
                 }
+                .navigationBarTitle("Liste des jeux")
                 .onAppear(perform: intent.loadGames)
 
             }

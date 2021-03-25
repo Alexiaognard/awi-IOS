@@ -23,7 +23,7 @@ class SearchEditorsIntent {
         APIRetriever.loadEditorsFromAPI(endofrequest: editorsLoaded, festivalId: festival.festivalId)
     }
     
-    func editorsLoaded(results: Result<[Editor],HttpRequestError>){
+    func editorsLoaded(results: Result<[EditorGameList],HttpRequestError>){
         switch results{
         case let .success(data):
             editorList.editorListState = .loaded(data)
@@ -31,4 +31,9 @@ class SearchEditorsIntent {
             editorList.editorListState = .loadingError(error)
         }
     }
+    
+    func refreshEditors(){
+        
+    }
+    
 }

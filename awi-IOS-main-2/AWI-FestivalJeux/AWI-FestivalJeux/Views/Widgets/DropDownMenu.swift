@@ -32,31 +32,47 @@ struct DropDownMenu: View {
     }
     
     var body: some View {
-        VStack(){
-            VStack(spacing: 20){
-                HStack{
-                    Text("Filtrer")
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                        .foregroundColor(.newGreen)
-                    Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
-                        .resizable()
-                        .frame(width: 13, height: 6)
-                        .foregroundColor(.newGreen)
-                }.onTapGesture {
-                    self.isExpanded.toggle()
-                }
-                if isExpanded {
-                    ForEach(self.filters){ filter in
-                        Button(action: {
-                                intent.filter(filterOption: filter.str)},
-                               label: {
-                            Text(filter.str)})
+        
+        if(self.filters.count > 3) {
+            VStack(){
+                VStack(spacing: 20){
+                    HStack{
+                        Text("Filtrer")
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            .foregroundColor(.newGreen)
+                        Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
+                            .resizable()
+                            .frame(width: 13, height: 6)
+                            .foregroundColor(.newGreen)
+                    }.onTapGesture {
+                        self.isExpanded.toggle()
                     }
-                    
+                    if isExpanded {
+                        ForEach(self.filters){ filter in
+                            Button(action: {
+                                    intent.filter(filterOption: filter.str)},
+                                   label: {
+                                Text(filter.str)})
+                        }
+                        
+                    }
+                }
+                .padding()
+            }
+        } else {
+            HStack {
+                ForEach(self.filters){ filter in
+                    Button(action: {
+                        intent.filter(filterOption: filter.str)
+                    },
+                    label: {
+                        Text(filter.str)
+                            .padding(.horizontal)
+                    })
                 }
             }
-            .padding()
         }
+        
     }
 }
 

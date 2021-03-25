@@ -18,6 +18,15 @@ struct ZoneData : Codable{
     }
 }
 
+struct ZoneGameListData : Codable {
+    var zone : ZoneData
+    var gameList : [GameData]
+    
+    enum CodingKeys: String, CodingKey{
+        case zone, gameList
+    }
+}
+
 struct EditorData : Codable{
     var editorId : String
     var editorName : String
@@ -94,8 +103,7 @@ struct APIRetriever {
     static var urlCurrentFestival=api+"/festival/current/"
     static var urlGameList=api+"/game/list/festival"
     static var urlEditorList=api+"/editor/list/festival"
-    static var urlZoneList=api+"/zone/list"
-    
+    static var urlZoneList=api+"/zone/list/festival"
     
  
     
@@ -182,15 +190,9 @@ struct APIRetriever {
                 if let data = data {
                     let decodedData : Decodable?
  
-                    //Print the received JSON
-                    if let jsonString = String(data: data, encoding: .utf8) {
-                                print("desc : "+jsonString)
-                    }
-                    
+                   
                     decodedData = try? JSONDecoder().decode([ReservationData].self, from: data)
-  
-                    
-                    
+ 
                     guard let decodedResponse = decodedData else {
                         DispatchQueue.main.async { endofrequest(.failure(.JsonDecodingFailed)) }
                         return
@@ -232,7 +234,7 @@ struct APIRetriever {
             }.resume()
         }
     
-    static func loadEditorsFromAPI(endofrequest: @escaping (Result<[Editor],HttpRequestError>) -> Void, festivalId: String){
+    static func loadEditorsFromAPI(endofrequest: @escaping (Result<[EditorGameList],HttpRequestError>) -> Void, festivalId: String){
         guard let url = URL(string: APIRetriever.urlEditorList+"/"+festivalId) else {
             endofrequest(.failure(.badURL(APIRetriever.urlEditorList+"/"+festivalId)))
             return
@@ -241,7 +243,7 @@ struct APIRetriever {
     }
     
 
-        private static func loadEditorsFromJsonData(url: URL, endofrequest: @escaping (Result<[Editor],HttpRequestError>) -> Void){
+        private static func loadEditorsFromJsonData(url: URL, endofrequest: @escaping (Result<[EditorGameList],HttpRequestError>) -> Void){
             let request = URLRequest(url: url)
             URLSession.shared.dataTask(with: request) { data, response, error in
                 if let data = data {
@@ -290,7 +292,7 @@ struct APIRetriever {
             }.resume()
         }
     
-    static func loadZonesFromAPI(endofrequest: @escaping (Result<[Zone],HttpRequestError>) -> Void, festivalId : String){
+    static func loadZonesFromAPI(endofrequest: @escaping (Result<[ZoneGameList],HttpRequestError>) -> Void, festivalId : String){
         guard let url = URL(string: APIRetriever.urlZoneList+"/"+festivalId) else {
             endofrequest(.failure(.badURL(APIRetriever.urlZoneList+"/"+festivalId)))
             return
@@ -299,21 +301,21 @@ struct APIRetriever {
     }
     
 
-        private static func loadZonesFromJsonData(url: URL, endofrequest: @escaping (Result<[Zone],HttpRequestError>) -> Void){
+        private static func loadZonesFromJsonData(url: URL, endofrequest: @escaping (Result<[ZoneGameList],HttpRequestError>) -> Void){
             let request = URLRequest(url: url)
             URLSession.shared.dataTask(with: request) { data, response, error in
                 if let data = data {
                     let decodedData : Decodable?
- 
-                    decodedData = try? JSONDecoder().decode([ZoneData].self, from: data)
+                    
+                    decodedData = try? JSONDecoder().decode([ZoneGameListData].self, from: data)
                     
                     guard let decodedResponse = decodedData else {
                         DispatchQueue.main.async { endofrequest(.failure(.JsonDecodingFailed)) }
                         return
                     }
-                    var tracksData : [ZoneData]
+                    var tracksData : [ZoneGameListData]
 
-                    tracksData = (decodedResponse as! [ZoneData])
+                    tracksData = (decodedResponse as! [ZoneGameListData])
                     
                     guard let tracks = self.zoneDataToZones(data: tracksData) else{
                         DispatchQueue.main.async { endofrequest(.failure(.JsonDecodingFailed)) }
@@ -384,10 +386,10 @@ struct APIRetriever {
     }
     
     
-    static func editorDataToEditors(data: [EditorData]) -> [Editor]?{
-        var editors = [Editor]()
+    static func editorDataToEditors(data: [EditorData]) -> [EditorGameList]?{
+        var editors = [EditorGameList]()
         for tdata in data{
-            let editor = editorDataToEditor(data: tdata)
+            let editor = EditorGameList(id: "aa", name: "aa", gameList: [Game(id: "aa", name: "aa", gameMinimumAge: 3, gameDuration: 3, isPrototype: false, gameMinimumPlayers: 3, gameMaximumPlayers: 4, gameType: "aa", gameEditor: Editor(id: "", name: ""), gameZone: Zone(zoneId: "", name: ""), isAP: false, notice: "")])
             editors.append(editor)
         }
         return editors
@@ -395,11 +397,19 @@ struct APIRetriever {
     
 
     
-    static func zoneDataToZones(data: [ZoneData]) -> [Zone]?{
-        var zones = [Zone]()
+    static func zoneDataToZones(data: [ZoneGameListData]) -> [ZoneGameList]?{
+        var zones = [ZoneGameList]()
+        
         for tdata in data{
-            let zone = zoneDataToZone(data: tdata)
-            zones.append(zone)
+            var games = [Game]()
+            let zone = zoneDataToZone(data: tdata.zone)
+            for game in tdata.gameList {
+                let editor = editorDataToEditor(data: game.gameEditor)
+                let game = Game(id: game.gameId, name: game.gameName, gameMinimumAge: game.gameMinimumAge, gameDuration: game.gameDuration, isPrototype: game.isPrototype, gameMinimumPlayers: game.gameMinimumPlayers, gameMaximumPlayers: game.gameMaximumPlayers, gameType: game.gameType.gameTypeName, gameEditor: editor, gameZone: zone, isAP: false, notice: game.gameNotice)
+                games.append(game)
+            }
+            let zoneGL = ZoneGameList(zoneId: zone.zoneId, name: zone.name, gameList: games)
+            zones.append(zoneGL)
         }
         return zones
     }

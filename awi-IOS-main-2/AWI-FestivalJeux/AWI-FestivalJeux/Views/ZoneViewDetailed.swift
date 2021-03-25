@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct ZoneViewDetailed: View {
-    var zone : Zone
+    var zone : ZoneGameList
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List{
+            ForEach(self.zone.gameList){ game in
+                ListItemGame(game: game)
+            }
+        }
+        .navigationBarTitle(zone.name)
     }
 }
 

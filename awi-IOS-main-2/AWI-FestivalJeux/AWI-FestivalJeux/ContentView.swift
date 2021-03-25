@@ -123,6 +123,17 @@ struct ContentView: View {
                                 }
                             }
                             .padding(.all,50)
+                            NavigationLink(destination: ZoneListView(zones: zones, festival: self.festival)) {
+                                VStack {
+                                Image(systemName: "house")
+                                    .foregroundColor(.black)
+                                    .imageScale(.large)
+                                Text("Zones")
+                                    .foregroundColor(.black)
+                                    .font(.headline)
+                                 }
+                            }
+                            .padding(.all,50)
                             
                         
                     }

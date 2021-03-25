@@ -19,6 +19,10 @@ struct EditorListView: View {
     
     
     var body: some View {
+        HStack{
+            Spacer()
+            ButtonView(functionToCall: intent.refreshEditors, label: "Rafraîchir")
+        }
         List{
             ForEach(self.editors.editorList){ editor in
                 NavigationLink(destination: EditorViewDetailed(editor: editor)) {

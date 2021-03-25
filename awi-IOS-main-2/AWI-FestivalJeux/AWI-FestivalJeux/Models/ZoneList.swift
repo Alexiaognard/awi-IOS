@@ -11,7 +11,8 @@ enum ZoneListState: CustomStringConvertible {
     case waiting
     case loading
     case loadingError(Error)
-    case loaded([Zone])
+    case loaded([ZoneGameList])
+    case over
     
     var description: String {
         switch self {
@@ -19,6 +20,7 @@ enum ZoneListState: CustomStringConvertible {
         case .loading : return "loading"
         case .loadingError(let error): return "loading error : \(error)"
         case .loaded(let zones) : return "loaded \(zones.count) zones"
+        case .over : return "over"
         }
     }
 }
@@ -26,6 +28,7 @@ enum ZoneListState: CustomStringConvertible {
 class ZoneList : ObservableObject {
     @Published var zoneListState : ZoneListState = .waiting {
         didSet{
+            print(self.zoneListState)
             switch self.zoneListState {
             case let .loaded(data):
                 self.new(data)
@@ -34,9 +37,9 @@ class ZoneList : ObservableObject {
         }
     }
     
-    @Published var zoneList = [Zone]()
+    @Published var zoneList = [ZoneGameList]()
     
-    func new(_ zones: [Zone]){
+    func new(_ zones: [ZoneGameList]){
         self.zoneList = zones
         self.zoneListState = .waiting
     }

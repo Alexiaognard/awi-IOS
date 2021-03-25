@@ -8,37 +8,20 @@
 import SwiftUI
 
 struct EditorViewDetailed: View {
-    var editor : Editor
-    var listGames = [Game]()
-    var localisation = [Zone]()
+    var editor : EditorGameList
     
     var body: some View {
-        VStack{
-            Text("\(editor.editorName)").font(.largeTitle)
-            Divider()
-            
-            Text("Jeux proposés :").font(.title2)
-            List{
-                ForEach(listGames){ game in
-                    NavigationLink(destination: GameViewDetailed(game: game)) {
-                        VStack {
-                            Text("\(game.gameName)")
-                        }
-                    }
-                    
-                }
+        Text("Jeux proposés :").font(.title2)
+        List{
+            ForEach(self.editor.gameList){ game in
+                ListItemGame(game: game)
             }
-            
-            Divider()
-            Text("Localisation :").font(.title2)
-            List{
-                ForEach(localisation){ loc in
-                    Text("\(loc.name)")
-                }
-            }
-            Spacer()
-            
         }
+        .navigationBarTitle(self.editor.editorName)
+            
+           
+            
+        
     }
 }
 

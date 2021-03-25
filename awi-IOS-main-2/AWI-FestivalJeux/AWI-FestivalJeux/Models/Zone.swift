@@ -17,3 +17,12 @@ class Zone : Identifiable {
         self.name = name
     }
 }
+
+class ZoneGameList : Zone {
+    var gameList : [Game]
+    init(zoneId: String, name: String, gameList: [Game]){
+        self.gameList = gameList
+        super.init(zoneId:zoneId,name:name)
+        
+    }
+}

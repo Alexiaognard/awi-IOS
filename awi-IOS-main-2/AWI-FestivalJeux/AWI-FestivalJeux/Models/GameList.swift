@@ -9,7 +9,10 @@ import Foundation
 import SwiftUI
 import Combine
 
+
 enum GameListState: CustomStringConvertible{
+    case sorted
+    case sorting(String)
     case over
     case loaded([Game])
     case loadingError(Error)
@@ -18,6 +21,8 @@ enum GameListState: CustomStringConvertible{
     
     var description: String{
         switch self{
+        case .sorted: return "sorted"
+        case .sorting(let param): return "sorting \(param)"
         case .over : return "over"
         case .loaded(let games) : return "loaded : \(games.count) games"
         case .loadingError(let error) : return "loading error : \(error)"
@@ -37,6 +42,8 @@ class GameList: ObservableObject{
                 print(error)
                 //Si une erreur pendant le chargement des jeux
                 return
+            case let .sorting(param):
+                self.sortGameList(param: param)
             default :
                 return
             }
@@ -47,7 +54,19 @@ class GameList: ObservableObject{
     
     func new(games: [Game]){
         self.gameList = games
-        self.gameListState = .waiting
+    }
+    
+    func sortGameList(param: String){
+        switch param{
+        case DropDownMenu.name:
+            self.gameList.sort(by: {$0.gameName < $1.gameName})
+        /*case DropDownMenu.editor:
+            
+        case DropDownMenu.zone:*/
+            
+        default: return
+        }
+        self.gameListState = .sorted
     }
     
 }

@@ -28,6 +28,7 @@
 		58EF0FC2260B3F0B008F378F /* NavigationBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EF0FC1260B3F0B008F378F /* NavigationBarColor.swift */; };
 		58EF0FCD260B5048008F378F /* DropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EF0FCC260B5048008F378F /* DropDownMenu.swift */; };
 		58EF0FD2260B5AF3008F378F /* IntentFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EF0FD1260B5AF3008F378F /* IntentFilter.swift */; };
+		B71FE697260C8C1000277307 /* ListItemZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71FE696260C8C1000277307 /* ListItemZone.swift */; };
 		B721859D25FA6A5B00A57B92 /* SearchGamesIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721859C25FA6A5B00A57B92 /* SearchGamesIntent.swift */; };
 		B72185A225FA6C4900A57B92 /* GameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72185A125FA6C4900A57B92 /* GameList.swift */; };
 		B78B29AE25FA700B00D4FA78 /* EditorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78B29AD25FA700B00D4FA78 /* EditorList.swift */; };
@@ -86,6 +87,7 @@
 		58EF0FC1260B3F0B008F378F /* NavigationBarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarColor.swift; sourceTree = "<group>"; };
 		58EF0FCC260B5048008F378F /* DropDownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownMenu.swift; sourceTree = "<group>"; };
 		58EF0FD1260B5AF3008F378F /* IntentFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentFilter.swift; sourceTree = "<group>"; };
+		B71FE696260C8C1000277307 /* ListItemZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemZone.swift; sourceTree = "<group>"; };
 		B721859C25FA6A5B00A57B92 /* SearchGamesIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGamesIntent.swift; sourceTree = "<group>"; };
 		B72185A125FA6C4900A57B92 /* GameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameList.swift; sourceTree = "<group>"; };
 		B78B29AD25FA700B00D4FA78 /* EditorList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorList.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				5831FAB0260A8248005A963B /* ButtonView.swift */,
 				58EF0FCC260B5048008F378F /* DropDownMenu.swift */,
 				B7F3BF4E260B96F700540024 /* ListItemEditor.swift */,
+				B71FE696260C8C1000277307 /* ListItemZone.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				0177AEAA25FA54C7002BE4CA /* GameListView.swift in Sources */,
 				0177AE8325FA1586002BE4CA /* GameViewDetailed.swift in Sources */,
 				01EC965925F766C600D705AD /* Zone.swift in Sources */,
+				B71FE697260C8C1000277307 /* ListItemZone.swift in Sources */,
 				B72185A225FA6C4900A57B92 /* GameList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

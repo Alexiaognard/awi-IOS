@@ -18,11 +18,9 @@ struct ButtonView: View {
     var body: some View {
         Button(action: self.function){
             HStack {
-                    Image(systemName: "arrow.clockwise.circle")
-                        .font(.title)
+                Image(systemName: "arrow.clockwise.circle")
                 Text(self.label)
-                        .fontWeight(.semibold)
-                        .font(.title)
+                    .fontWeight(.semibold)
                 }
             
             .padding(.all,7)
@@ -30,6 +28,7 @@ struct ButtonView: View {
                 .background(Color.newGreen)
                 .cornerRadius(40)
         }
+        .padding(.all,5)
         
     }
 }

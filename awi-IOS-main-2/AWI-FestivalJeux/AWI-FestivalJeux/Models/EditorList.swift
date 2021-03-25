@@ -11,7 +11,7 @@ enum EditorListState: CustomStringConvertible{
     case waiting
     case loading
     case loadingError(Error)
-    case loaded([Editor])
+    case loaded([EditorGameList])
     
     var description: String{
         switch self {
@@ -35,9 +35,9 @@ class EditorList: ObservableObject{
         }
     }
     
-    @Published var editorList = [Editor]()
+    @Published var editorList = [EditorGameList]()
     
-    func new(_ editors: [Editor]){
+    func new(_ editors: [EditorGameList]){
         self.editorList = editors
         self.editorListState = .waiting
     }
