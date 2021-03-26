@@ -26,8 +26,6 @@
 		5840143F260B222B008E0A80 /* ListItemGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840143E260B222B008E0A80 /* ListItemGame.swift */; };
 		58D921112603C6080091B0C8 /* SearchFestivalIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D921102603C6080091B0C8 /* SearchFestivalIntent.swift */; };
 		58EF0FC2260B3F0B008F378F /* NavigationBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EF0FC1260B3F0B008F378F /* NavigationBarColor.swift */; };
-		58EF0FCD260B5048008F378F /* DropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EF0FCC260B5048008F378F /* DropDownMenu.swift */; };
-		58EF0FD2260B5AF3008F378F /* IntentFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EF0FD1260B5AF3008F378F /* IntentFilter.swift */; };
 		B71FE697260C8C1000277307 /* ListItemZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71FE696260C8C1000277307 /* ListItemZone.swift */; };
 		B721859D25FA6A5B00A57B92 /* SearchGamesIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721859C25FA6A5B00A57B92 /* SearchGamesIntent.swift */; };
 		B72185A225FA6C4900A57B92 /* GameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72185A125FA6C4900A57B92 /* GameList.swift */; };
@@ -40,6 +38,8 @@
 		B7BBBF7C25FB56880034116C /* InOutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BBBF7B25FB56880034116C /* InOutHelper.swift */; };
 		B7BBBF8125FB56BA0034116C /* APIRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BBBF8025FB56BA0034116C /* APIRetriever.swift */; };
 		B7F3BF4F260B96F700540024 /* ListItemEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F3BF4E260B96F700540024 /* ListItemEditor.swift */; };
+		BAA119B6260E583E009C426C /* SearchGamesFromEditorIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA119B5260E583E009C426C /* SearchGamesFromEditorIntent.swift */; };
+		BAA119DA260E9960009C426C /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA119D9260E9960009C426C /* ErrorMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,8 +85,6 @@
 		5840143E260B222B008E0A80 /* ListItemGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemGame.swift; sourceTree = "<group>"; };
 		58D921102603C6080091B0C8 /* SearchFestivalIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFestivalIntent.swift; sourceTree = "<group>"; };
 		58EF0FC1260B3F0B008F378F /* NavigationBarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarColor.swift; sourceTree = "<group>"; };
-		58EF0FCC260B5048008F378F /* DropDownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownMenu.swift; sourceTree = "<group>"; };
-		58EF0FD1260B5AF3008F378F /* IntentFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentFilter.swift; sourceTree = "<group>"; };
 		B71FE696260C8C1000277307 /* ListItemZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemZone.swift; sourceTree = "<group>"; };
 		B721859C25FA6A5B00A57B92 /* SearchGamesIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGamesIntent.swift; sourceTree = "<group>"; };
 		B72185A125FA6C4900A57B92 /* GameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameList.swift; sourceTree = "<group>"; };
@@ -99,6 +97,8 @@
 		B7BBBF7B25FB56880034116C /* InOutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOutHelper.swift; sourceTree = "<group>"; };
 		B7BBBF8025FB56BA0034116C /* APIRetriever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRetriever.swift; sourceTree = "<group>"; };
 		B7F3BF4E260B96F700540024 /* ListItemEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemEditor.swift; sourceTree = "<group>"; };
+		BAA119B5260E583E009C426C /* SearchGamesFromEditorIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGamesFromEditorIntent.swift; sourceTree = "<group>"; };
+		BAA119D9260E9960009C426C /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,9 +222,9 @@
 			children = (
 				5840143E260B222B008E0A80 /* ListItemGame.swift */,
 				5831FAB0260A8248005A963B /* ButtonView.swift */,
-				58EF0FCC260B5048008F378F /* DropDownMenu.swift */,
 				B7F3BF4E260B96F700540024 /* ListItemEditor.swift */,
 				B71FE696260C8C1000277307 /* ListItemZone.swift */,
+				BAA119D9260E9960009C426C /* ErrorMessage.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -236,7 +236,7 @@
 				B78B29B525FA719000D4FA78 /* SearchEditorsIntent.swift */,
 				B7BBBF7525FB54E00034116C /* SearchZonesIntent.swift */,
 				58D921102603C6080091B0C8 /* SearchFestivalIntent.swift */,
-				58EF0FD1260B5AF3008F378F /* IntentFilter.swift */,
+				BAA119B5260E583E009C426C /* SearchGamesFromEditorIntent.swift */,
 			);
 			path = Intent;
 			sourceTree = "<group>";
@@ -396,17 +396,17 @@
 				5840143F260B222B008E0A80 /* ListItemGame.swift in Sources */,
 				B7BBBF8125FB56BA0034116C /* APIRetriever.swift in Sources */,
 				0177AE7825F9FC57002BE4CA /* Festival.swift in Sources */,
-				58EF0FCD260B5048008F378F /* DropDownMenu.swift in Sources */,
 				58EF0FC2260B3F0B008F378F /* NavigationBarColor.swift in Sources */,
 				B7BBBF7C25FB56880034116C /* InOutHelper.swift in Sources */,
-				58EF0FD2260B5AF3008F378F /* IntentFilter.swift in Sources */,
 				B7BBBF6025FB4F890034116C /* ZoneList.swift in Sources */,
 				01EC964F25F7645D00D705AD /* Editor.swift in Sources */,
 				01EC961B25F633FE00D705AD /* AWI_FestivalJeuxApp.swift in Sources */,
 				0177AEA025FA3A0A002BE4CA /* EditorViewDetailed.swift in Sources */,
+				BAA119B6260E583E009C426C /* SearchGamesFromEditorIntent.swift in Sources */,
 				0177AEAA25FA54C7002BE4CA /* GameListView.swift in Sources */,
 				0177AE8325FA1586002BE4CA /* GameViewDetailed.swift in Sources */,
 				01EC965925F766C600D705AD /* Zone.swift in Sources */,
+				BAA119DA260E9960009C426C /* ErrorMessage.swift in Sources */,
 				B71FE697260C8C1000277307 /* ListItemZone.swift in Sources */,
 				B72185A225FA6C4900A57B92 /* GameList.swift in Sources */,
 			);

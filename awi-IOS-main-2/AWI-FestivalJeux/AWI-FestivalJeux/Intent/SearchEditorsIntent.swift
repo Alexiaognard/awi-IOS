@@ -18,12 +18,16 @@ class SearchEditorsIntent {
     }
     
     func loadEditors(){
-        self.editorList.editorListState = .loading
-        //Faire appel à l'API
-        APIRetriever.loadEditorsFromAPI(endofrequest: editorsLoaded, festivalId: festival.festivalId)
+        switch editorList.editorListState{
+        case .waiting:
+            self.editorList.editorListState = .loading
+            //Faire appel à l'API
+            APIRetriever.loadEditorsFromAPI(endofrequest: editorsJsonLoaded, festivalId: festival.festivalId)
+        default: return
+        }
     }
     
-    func editorsLoaded(results: Result<[EditorGameList],HttpRequestError>){
+    func editorsJsonLoaded(results: Result<[EditorGameList],HttpRequestError>){
         switch results{
         case let .success(data):
             editorList.editorListState = .loaded(data)
@@ -32,8 +36,20 @@ class SearchEditorsIntent {
         }
     }
     
+    func editorsLoaded(){
+        self.editorList.editorListState = .over
+    }
+    
     func refreshEditors(){
+        switch editorList.editorListState {
+        case .over:
+            self.editorList.editorListState = .loading
+            //Faire appel à l'API
+            APIRetriever.loadEditorsFromAPI(endofrequest: editorsJsonLoaded, festivalId: festival.festivalId)
+        default: return
+        }
         
     }
+
     
 }

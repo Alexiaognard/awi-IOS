@@ -11,6 +11,12 @@ struct GameListView: View {
     @ObservedObject var games : GameList
     var intent : SearchGamesIntent
     
+    @State var textSearch = ""
+    
+    private var gameListState : GameListState {
+        return self.games.gameListState
+    }
+    
     init(games: GameList, festival: Festival){
         self.games = games
         self.intent = SearchGamesIntent(gameList: games, festival: festival)
@@ -19,7 +25,7 @@ struct GameListView: View {
     
     func stateChanged(state: GameListState){
         switch state{
-        case .loaded, .sorted:
+        case .loaded:
             self.intent.gamesLoaded()
         
         default: return
@@ -27,36 +33,58 @@ struct GameListView: View {
         
     }
     
-    var body: some View {
-            VStack{
-               
-                HStack{
-                    Spacer()
-                    ButtonView(functionToCall: intent.refreshGames, label: "Rafraîchir")
-                }
-                HStack{
-                DropDownMenu(filterOptions: [DropDownMenu.name,DropDownMenu.editor,DropDownMenu.zone], intent: self.intent)
-                    Spacer()
-                }
-        
-                List{
-                    Section(header:EmptyView(),footer:EmptyView()){
-                        ForEach(self.games.gameList){ game in
-                            ListItemGame(game:game)
-                        }
-                    }
-                }
-                .navigationBarTitle("Liste des jeux")
-                .onAppear(perform: intent.loadGames)
-
+    private func filterSearch(game: Game) -> Bool{
+            var ret = true
+            if !textSearch.isEmpty {
+                ret = false
+                ret = ret || game.gameName.contains(textSearch)
+                ret = ret || game.gameEditor.editorName.contains(textSearch)
             }
+            return ret
+        }
+    
+    var body: some View {
+        
+        ButtonView(functionToCall: intent.refreshGames,
+                           label: "Rafraîchir")
+            
+                
+        TextField("Recherche...",text: $textSearch)
+            .font(.footnote)
+            .padding()
+        ZStack{
+            List{
+                ForEach(self.games.gameList.filter(filterSearch)){ game in
+                    ListItemGame(game:game)
+                }
+                
+            }
+            .navigationBarTitle("Liste des jeux")
+            .onAppear(perform: intent.loadGames)
+            ErrorGameView(state: self.gameListState)
+        }
         
     }
 }
 
-struct GameListView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        GameListView(games: GameList(), festival: Festival())
+struct ErrorGameView : View{
+    let state : GameListState
+    var body: some View{
+        VStack{
+            Spacer()
+            switch state{
+            case .loading, .loaded:
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+                    .scaleEffect(1)
+                    .padding()
+            case .loadingError(let error):
+                ErrorMessage(error: error)
+            default:
+                EmptyView()
+            }
+            Spacer()
+        }
     }
 }
+

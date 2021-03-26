@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class SearchGamesIntent : IntentFilter {
+class SearchGamesIntent {
     @ObservedObject var gameList : GameList
     @ObservedObject var festival : Festival
     
@@ -32,7 +32,6 @@ class SearchGamesIntent : IntentFilter {
         switch self.gameList.gameListState{
         case .over:
             self.gameList.gameListState = .loading
-            
             //Faire appel à l'API
             APIRetriever.loadGamesFromAPI(endofrequest: gamesJsonLoaded, festivalId: festival.festivalId)
             default: return
@@ -53,9 +52,5 @@ class SearchGamesIntent : IntentFilter {
     
     func gamesLoaded(){
         self.gameList.gameListState = .over
-    }
-    
-    func filter(filterOption: String) -> Void{
-        self.gameList.gameListState = .sorting(filterOption)
     }
 }

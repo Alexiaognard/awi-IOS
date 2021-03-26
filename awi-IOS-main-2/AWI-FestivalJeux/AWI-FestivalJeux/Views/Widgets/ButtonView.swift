@@ -16,19 +16,22 @@ struct ButtonView: View {
         self.label = label
     }
     var body: some View {
-        Button(action: self.function){
-            HStack {
-                Image(systemName: "arrow.clockwise.circle")
-                Text(self.label)
-                    .fontWeight(.semibold)
-                }
-            
-            .padding(.all,7)
-                .foregroundColor(.white)
-                .background(Color.newGreen)
-                .cornerRadius(40)
+        HStack{
+            Spacer()
+            Button(action: self.function){
+                HStack {
+                    Image(systemName: "arrow.clockwise.circle")
+                    Text(self.label)
+                        .fontWeight(.semibold)
+                    }
+                
+                .padding(.all,7)
+                    .foregroundColor(.white)
+                    .background(Color.newGreen)
+                    .cornerRadius(40)
+            }
+            .padding(.all,5)
         }
-        .padding(.all,5)
         
     }
 }

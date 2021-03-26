@@ -34,6 +34,10 @@ struct ContentView: View {
     
     var intentFestival : SearchFestivalIntent
     
+    private var festivalState : FestivalState {
+        return self.festival.festivalState
+    }
+    
     init(games: GameList, zones: ZoneList, editors: EditorList, festival: Festival){
         self.games = games
         self.zones = zones
@@ -64,40 +68,9 @@ struct ContentView: View {
     
     
     var body: some View {
-      
-            /*switch $festival.festivalState {
-            case let FestivalState.loaded(data):
-            return Text("aaa")
-            default: return Text("bbb")
-            }*/
-           /*if showMenu {
-            Text("aaa")
-           }else{
-            Text("not over "+showMenu.description+" "+self.festival.festivalState.description)
-                .onAppear(perform: {
-                    intentFestival.loadFestival()
-                })
-                .opacity(self.showMenu ? 0 : 1)
-           }*/
-            /* Fonctionne
-             Text(festival.festivalState.description).onAppear(perform: {
-                intentFestival.loadFestival()
-            })*/
-            /*
-            if festival.festivalState == .loading {
-                Text("aa")
-            }else{
-                Text("bb")
-            }*/
-            
-                
-        NavigationView {
-            
-                    
-                        
-                                
-            VStack{
-                                    
+        ZStack{
+            NavigationView {
+                VStack{
                             NavigationLink(destination: GameListView(games: games, festival: self.festival)) {
                                 VStack {
                                     Image(systemName: "gamecontroller")
@@ -143,14 +116,34 @@ struct ContentView: View {
            intentFestival.loadFestival()
         })
         .navigationBarColor(backgroundColor: .newGreen, tintColor: .white)
-                            
-                           
+        //ErrorMainView(state: self.festivalState)
+        }
+        
     }
 }
 
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView(games: GameList(), zones: ZoneList(), editors: EditorList(), festival: Festival())
+/*
+ // A décommenter (avec la l.118 si on arrive à trouver la solution pour cacher le menu lorsque c'est pas chargé
+struct ErrorMainView : View{
+    let state : FestivalState
+    var body: some View{
+        VStack{
+            Spacer()
+            switch state{
+            case .loading, .loaded:
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+                    .scaleEffect(1)
+                    .padding()
+            case .loadingError(let error):
+                ErrorMessage(error: error)
+            default:
+                EmptyView()
+            }
+            Spacer()
+        }
     }
 }
+ 
+ */
+

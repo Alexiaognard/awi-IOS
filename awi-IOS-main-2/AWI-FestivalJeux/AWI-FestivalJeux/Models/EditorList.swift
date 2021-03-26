@@ -12,6 +12,7 @@ enum EditorListState: CustomStringConvertible{
     case loading
     case loadingError(Error)
     case loaded([EditorGameList])
+    case over
     
     var description: String{
         switch self {
@@ -19,6 +20,8 @@ enum EditorListState: CustomStringConvertible{
         case .loading : return "loading"
         case .loadingError(let error): return "loading error : \(error)"
         case .loaded(let editors) : return "loaded \(editors.count) editors"
+        case .over: return "over"
+
         }
         
     }

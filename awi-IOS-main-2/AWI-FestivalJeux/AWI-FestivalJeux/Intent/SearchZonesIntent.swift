@@ -35,4 +35,13 @@ class SearchZonesIntent {
             self.zoneList.zoneListState = .loadingError(error)
         }
     }
+    
+    func refreshZones(){
+        switch zoneList.zoneListState{
+        case .over:
+            self.zoneList.zoneListState = .loading
+            APIRetriever.loadZonesFromAPI(endofrequest: zonesLoaded, festivalId: festival.festivalId)
+        default: return
+        }
+    }
 }

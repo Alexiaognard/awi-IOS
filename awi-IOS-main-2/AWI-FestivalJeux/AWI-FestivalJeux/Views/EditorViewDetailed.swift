@@ -8,30 +8,61 @@
 import SwiftUI
 
 struct EditorViewDetailed: View {
-    var editor : EditorGameList
+    @ObservedObject var editor : EditorGameList
+    var intent : SearchGamesFromEditorIntent
+    
+    private var editorState : EditorState {
+        return self.editor.editorState
+    }
+    
+    init(editor: EditorGameList,festival: Festival) {
+        self.editor = editor
+        self.intent = SearchGamesFromEditorIntent(editor: editor, festival: festival)
+        let _  = self.editor.$editorState.sink(receiveValue: stateChanged)
+    }
+    
+    func stateChanged(state: EditorState){
+        switch state {
+        case .loaded:
+            self.intent.editorGamesLoaded()
+        default: return
+        }
+    }
     
     var body: some View {
-        Text("Jeux proposés :").font(.title2)
-        List{
-            ForEach(self.editor.gameList){ game in
-                ListItemGame(game: game)
+        ZStack{
+            Text("Jeux proposés :").font(.title2)
+            List{
+                ForEach(self.editor.gameList){ game in
+                    ListItemGame(game: game)
+                }
             }
+            .onAppear(perform: {
+                self.intent.loadEditorGames(editorId: self.editor.editorId)
+            })
+            .navigationBarTitle(self.editor.editorName)
+            ErrorEditorView(state: self.editorState)
         }
-        .navigationBarTitle(self.editor.editorName)
-            
-           
-            
-        
     }
 }
 
-/*struct EditorViewDetailed_Previews: PreviewProvider {
-    static var previews: some View {
-        EditorViewDetailed(
-            editor: Editor(id: 1, name: "Hasbro"),
-            listGames: [Game(id: 1, name: "Monopoly", gameMinimumAge: 6, gameDuration: 30, isPrototype: false, gameMinimumPlayers: 2, gameMaximumPlayers: 6, gameType: "Famille", gameEditor: Editor(id: 1, name: "Editeur1"), gameZone: Zone(name: "Famille"), isAP: false),
-                Game(id: 1, name: "Monopoly", gameMinimumAge: 6, gameDuration: 30, isPrototype: false, gameMinimumPlayers: 2, gameMaximumPlayers: 6, gameType: "Famille", gameEditor: Editor(id: 1, name: "Editeur1"), gameZone: Zone(name: "Pour tous"), isAP: false)
-            ],
-            localisation: [Zone(name: "Famille"), Zone(name: "Pour tous")])
+struct ErrorEditorView : View{
+    let state : EditorState
+    var body: some View{
+        VStack{
+            Spacer()
+            switch state{
+            case .loading, .loaded:
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+                    .scaleEffect(1)
+                    .padding()
+            case .loadingError(let error):
+                ErrorMessage(error: error)
+            default:
+                EmptyView()
+            }
+            Spacer()
+        }
     }
-}*/
+}
