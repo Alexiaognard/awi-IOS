@@ -28,7 +28,6 @@ class SearchGamesFromEditorIntent {
     }
     
     func editorGamesLoaded(results: Result<[Game],HttpRequestError>){
-        print(results)
         switch results{
         case let .success(data):
             editor.editorState = .loaded(data)

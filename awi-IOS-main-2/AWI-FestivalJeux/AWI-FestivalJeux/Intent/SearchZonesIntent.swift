@@ -22,12 +22,12 @@ class SearchZonesIntent {
         case .waiting:
             self.zoneList.zoneListState = .loading
             //Faire appel à l'API
-            APIRetriever.loadZonesFromAPI(endofrequest: zonesLoaded, festivalId: festival.festivalId)
+            APIRetriever.loadZonesFromAPI(endofrequest: zoneJsonloaded, festivalId: festival.festivalId)
         default: return
         }
     }
     
-    func zonesLoaded(results: Result<[ZoneGameList],HttpRequestError>){
+    func zoneJsonloaded(results: Result<[ZoneGameList],HttpRequestError>){
         switch results{
         case let .success(data):
             self.zoneList.zoneListState = .loaded(data)
@@ -36,11 +36,15 @@ class SearchZonesIntent {
         }
     }
     
+    func zonesLoaded(){
+        self.zoneList.zoneListState = .over
+    }
+    
     func refreshZones(){
         switch zoneList.zoneListState{
         case .over:
             self.zoneList.zoneListState = .loading
-            APIRetriever.loadZonesFromAPI(endofrequest: zonesLoaded, festivalId: festival.festivalId)
+            APIRetriever.loadZonesFromAPI(endofrequest: zoneJsonloaded, festivalId: festival.festivalId)
         default: return
         }
     }

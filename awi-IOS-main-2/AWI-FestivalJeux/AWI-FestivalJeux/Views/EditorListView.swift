@@ -36,8 +36,9 @@ struct EditorListView: View {
     private func filterSearch(editor: EditorGameList) -> Bool{
             var ret = true
             if !textSearch.isEmpty {
+                let editorNameLowerCase = editor.editorName.lowercased()
                 ret = false
-                ret = ret || editor.editorName.contains(textSearch)
+                ret = ret || editorNameLowerCase.contains(textSearch.lowercased())
             }
             return ret
         }

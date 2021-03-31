@@ -24,7 +24,10 @@ struct EditorViewDetailed: View {
     func stateChanged(state: EditorState){
         switch state {
         case .loaded:
-            self.intent.editorGamesLoaded()
+            //Fonctionne pas ???????
+            //Déplacé dans le new du model
+            return  
+            //self.intent.editorGamesLoaded()
         default: return
         }
     }

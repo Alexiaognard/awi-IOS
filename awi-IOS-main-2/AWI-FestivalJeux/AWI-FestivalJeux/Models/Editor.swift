@@ -30,7 +30,7 @@ enum EditorState : CustomStringConvertible {
         switch self{
         case .waiting: return "waiting"
         case .loading: return "loading"
-        case let .loaded(games): return "\(games.count) loaded"
+        case let .loaded(games): return "\(games.count) games loaded"
         case let .loadingError(error): return "loading error : \(error)"
         case .over: return "over"
         }
@@ -43,7 +43,8 @@ class EditorGameList : Editor, ObservableObject {
     @Published var editorState : EditorState = .waiting {
         didSet{
             switch self.editorState{
-            case let .loaded(games): self.new(games)
+            case let .loaded(games):
+                self.new(games)
             default: return
             }
         }
@@ -55,5 +56,6 @@ class EditorGameList : Editor, ObservableObject {
     
     func new(_ games: [Game]){
         self.gameList = games
+        self.editorState = .over
     }
 }

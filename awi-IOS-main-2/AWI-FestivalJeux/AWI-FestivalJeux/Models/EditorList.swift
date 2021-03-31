@@ -42,6 +42,5 @@ class EditorList: ObservableObject{
     
     func new(_ editors: [EditorGameList]){
         self.editorList = editors
-        self.editorListState = .waiting
     }
 }

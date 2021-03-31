@@ -28,7 +28,6 @@ enum ZoneListState: CustomStringConvertible {
 class ZoneList : ObservableObject {
     @Published var zoneListState : ZoneListState = .waiting {
         didSet{
-            print(self.zoneListState)
             switch self.zoneListState {
             case let .loaded(data):
                 self.new(data)
@@ -41,6 +40,5 @@ class ZoneList : ObservableObject {
     
     func new(_ zones: [ZoneGameList]){
         self.zoneList = zones
-        self.zoneListState = .waiting
     }
 }

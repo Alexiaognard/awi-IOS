@@ -20,7 +20,6 @@ class SearchGamesIntent {
     func loadGames(){
         switch gameList.gameListState {
         case .waiting:
-            print(gameList.gameListState)
             self.gameList.gameListState = .loading
             //Faire appel à l'API
             APIRetriever.loadGamesFromAPI(endofrequest: gamesJsonLoaded, festivalId: festival.festivalId)
@@ -42,7 +41,6 @@ class SearchGamesIntent {
     func gamesJsonLoaded(result: Result<[Game], HttpRequestError>){
         switch result {
         case let .success(data):
-            print(data.description)
             self.gameList.gameListState = .loaded(data)
         case let .failure(error):
             self.gameList.gameListState = .loadingError(error)

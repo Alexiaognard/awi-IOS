@@ -11,6 +11,8 @@ struct ZoneListView: View {
     @ObservedObject var zones : ZoneList
     var intent : SearchZonesIntent
     
+    @State var textSearch = ""
+    
     private var zoneListState : ZoneListState {
         return self.zones.zoneListState
     }
@@ -18,13 +20,35 @@ struct ZoneListView: View {
     init(zones : ZoneList, festival: Festival){
         self.zones = zones
         self.intent = SearchZonesIntent(zoneList: zones, festival: festival)
+        let _  = self.zones.$zoneListState.sink(receiveValue: stateChanged)
+    }
+    
+    private func filterSearch(zone: ZoneGameList) -> Bool{
+            var ret = true
+            if !textSearch.isEmpty {
+                let zoneNameLowerCase = zone.name.lowercased()
+                ret = false
+                ret = ret || zoneNameLowerCase.contains(textSearch.lowercased())
+            }
+            return ret
+    }
+    
+    func stateChanged(state: ZoneListState){
+        switch state {
+        case .loaded:
+            self.intent.zonesLoaded()
+        default: return
+        }
     }
     
     var body: some View {
         ButtonView(functionToCall: intent.refreshZones, label: "Rafraîchir")
+        TextField("Recherche...",text: $textSearch)
+            .font(.footnote)
+            .padding()
         ZStack{
             List{
-                ForEach(self.zones.zoneList){ zone in
+                ForEach(self.zones.zoneList.filter(filterSearch)){ zone in
                     NavigationLink(destination: ZoneViewDetailed(zone: zone)) {
                             ListItemZone(zone: zone)
                     }

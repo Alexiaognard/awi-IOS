@@ -19,6 +19,7 @@ struct ListItemZone: View {
             Text(zone.name)
                 .font(.title)
             Text("Nombre de jeux : \(zone.gameList.count)")
+                .font(.subheadline)
         }
     }
 }

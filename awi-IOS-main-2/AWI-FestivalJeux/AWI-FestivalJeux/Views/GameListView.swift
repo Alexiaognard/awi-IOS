@@ -36,9 +36,11 @@ struct GameListView: View {
     private func filterSearch(game: Game) -> Bool{
             var ret = true
             if !textSearch.isEmpty {
+                let gameNameLowerCase = game.gameName.lowercased()
+                let gameEditorLowerCase = game.gameEditor.editorName.lowercased()
                 ret = false
-                ret = ret || game.gameName.contains(textSearch)
-                ret = ret || game.gameEditor.editorName.contains(textSearch)
+                ret = ret || gameNameLowerCase.contains(textSearch.lowercased())
+                ret = ret || gameEditorLowerCase.contains(textSearch.lowercased())
             }
             return ret
         }
@@ -57,8 +59,8 @@ struct GameListView: View {
                 ForEach(self.games.gameList.filter(filterSearch)){ game in
                     ListItemGame(game:game)
                 }
-                
             }
+            .padding(.all,0)
             .navigationBarTitle("Liste des jeux")
             .onAppear(perform: intent.loadGames)
             ErrorGameView(state: self.gameListState)

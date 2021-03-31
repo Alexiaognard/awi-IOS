@@ -116,32 +116,22 @@ struct APIRetriever {
         self.loadFestivalFromJsonData(url: url, endofrequest: endofrequest)
     }
 
-        private static func loadFestivalFromJsonData(url: URL, endofrequest: @escaping (Result<Festival,HttpRequestError>) -> Void, ItuneApiRequest: Bool = true){
+        private static func loadFestivalFromJsonData(url: URL, endofrequest: @escaping (Result<Festival,HttpRequestError>) -> Void){
             let request = URLRequest(url: url)
             URLSession.shared.dataTask(with: request) { data, response, error in
                 if let data = data {
                     let decodedData : Decodable?
                     //Print the received JSON
-                    if let jsonString = String(data: data, encoding: .utf8) {
-                                print("desc : "+jsonString)
-                    }
-                    /*if ItuneApiRequest{
-                        decodedData = try? JSONDecoder().decode(FestivalListData.self, from: data)
-                    }
-                    else{*/
-                        decodedData = try? JSONDecoder().decode([FestivalData].self, from: data)
-                    //}
+    
+                        decodedData = try? JSONDecoder().decode(FestivalData.self, from: data)
+           
                     guard let decodedResponse = decodedData else {
                         DispatchQueue.main.async { endofrequest(.failure(.JsonDecodingFailed)) }
                         return
                     }
-                    var tracksData : [FestivalData]
-                    /*if ItuneApiRequest{
-                        tracksData = (decodedResponse as! FestivalListData).results
-                    }
-                    else{*/
-                        tracksData = (decodedResponse as! [FestivalData])
-                    //}
+                    var tracksData : FestivalData
+                    tracksData = (decodedResponse as! FestivalData)
+
                     let festival = self.festivalDatatoFestival(data: tracksData)
                     DispatchQueue.main.async {
                         endofrequest(.success(festival))
@@ -172,7 +162,7 @@ struct APIRetriever {
             }.resume()
         }
     
-    static func loadGamesFromAPI(/*url surl: String,*/ endofrequest: @escaping (Result<[Game],HttpRequestError>) -> Void, festivalId: String){
+    static func loadGamesFromAPI(endofrequest: @escaping (Result<[Game],HttpRequestError>) -> Void, festivalId: String){
         guard let url = URL(string: APIRetriever.urlGameList+"/"+festivalId) else {
             endofrequest(.failure(.badURL(APIRetriever.urlGameList+"/"+festivalId)))
             return
@@ -306,7 +296,6 @@ struct APIRetriever {
             let request = URLRequest(url: url)
             URLSession.shared.dataTask(with: request) { data, response, error in
                 if let data = data {
-                    print(String(decoding: data, as: UTF8.self))
                     let decodedData : Decodable?
                     
                     decodedData = try? JSONDecoder().decode([ReservedGameData].self, from: data)
@@ -481,8 +470,8 @@ struct APIRetriever {
         return zones
     }
     
-    static func festivalDatatoFestival(data: [FestivalData]) -> Festival {
-        let festival = Festival(festivalId: data[0].festivalId)
+    static func festivalDatatoFestival(data: FestivalData) -> Festival {
+        let festival = Festival(festivalId: data.festivalId)
         return festival
     }
 }

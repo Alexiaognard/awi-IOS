@@ -9,16 +9,19 @@ import SwiftUI
 
 extension UIColor {
     public static var newGreen: UIColor {
-        return UIColor(red: 107/255, green: 164/255, blue: 113/255, alpha: 1.0)
+        return UIColor(red: 55/255, green: 184/255, blue: 123/255, alpha: 1.0)
     }
 }
 extension Color {
     public init(decimalRed red: Double, green: Double, blue: Double) {
         self.init(red: red / 255, green: green / 255, blue: blue / 255)
     }
+    public static var lightGreen: Color {
+        return Color(red: 204/255, green: 255/255, blue: 204/255)
+    }
     
     public static var newGreen: Color {
-        return Color(red: 107/255, green: 164/255, blue: 113/255)
+        return Color(red: 55/255, green: 184/255, blue: 123/255)
     }
     public static var newRed: Color {
         return Color(decimalRed: 173/255, green: 79/255, blue: 79/255)
@@ -58,7 +61,6 @@ struct ContentView: View {
         case .loaded:
             self.intentFestival.festivalLoaded()
         case .over:
-            print("over")
             self.showMenu = false
         default: return
         }
