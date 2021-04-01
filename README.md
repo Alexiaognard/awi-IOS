@@ -1,6 +1,6 @@
 # Projet d'application mobile du Festival des jeux
 
-Application mobile du festival des jeux dans le cadre du projet AWI-IOS à Polytech montpellier
+Application mobile du festival des jeux dans le cadre du projet AWI-IOS à Polytech Montpellier
 
 ## Installation
 
