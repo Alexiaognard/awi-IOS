@@ -4,7 +4,7 @@ Application mobile du festival des jeux dans le cadre du projet AWI-IOS à Polyt
 
 ## Installation
 
-1. ```bash git clone https://github.com/Alexiaognard/awi-IOS ```
+1. ``` git clone https://github.com/Alexiaognard/awi-IOS ```
 
 2. Ouvrez AWI-FestivalJeux.xcodeproj dans XCode puis lancer le simulateur.
 
@@ -16,7 +16,7 @@ Application mobile du festival des jeux dans le cadre du projet AWI-IOS à Polyt
 
 ## Technologies
 
-Application Mobile Apple développer en [SwiftUI](https://developer.apple.com/xcode/swiftui/)
+Application Mobile Apple développée en [SwiftUI](https://developer.apple.com/xcode/swiftui/).
 
 ## License
 
